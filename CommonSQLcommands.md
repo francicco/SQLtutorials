@@ -25,7 +25,7 @@ _**2. DROP Command**_
 
 Syntax to drop a table:
 
-``` sql
+```sql
 DROP TABLE table_name;
 ```
 
@@ -35,7 +35,7 @@ _**3. ALTER Command**_
 
 A. Syntax to add a column into a table:          
 
-```sql
+```SQL
 ALTER TABLE table_name ADD (column_name datatype(size));
 ```
 
