@@ -75,18 +75,22 @@ Purpose: To retrieve data from tables in the database.
 
 Syntax to select data from a table:
 
-1
+```sql
 SELECT * FROM table_name;
+```
+
 Data Manipulation Language (DML)
 The SQL DML commands provide the ability to query, delete and update data in the database.  Use the following commands in this category.
+
 
 INSERT Command
 
 Purpose: To add records of data into an existing table. 
 Syntax to insert data into three columns in a table:
 
-1
+```sql
 INSERT INTO table_name (column1, column2, column3) VALUES (value1, value2, value3);
+```
 
 UPDATE Command 
 
@@ -94,8 +98,9 @@ Purpose: To modify or update data contained within a table in the database.
 
 Syntax to update data in two columns:
 
-1
+```sql
 UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;
+```
 
 DELETE Command
 
@@ -103,8 +108,9 @@ Purpose: To delete data from a table in the database.
 
 Syntax to delete data:
 
-1
+```sql
 DELETE FROM table_name WHERE condition;
+```
 
 Data Control Language (DCL)
 You use DCL to deal with the rights and permissions of users of a database system. You can execute SQL commands to perform different types of operations such as create and drop tables. To do this, you need to have user rights set up. This is called user privileges. This category deals with advanced functions or operations in the database. Note that this category can have a generic description of the two main commands. Use the following commands in this category:
