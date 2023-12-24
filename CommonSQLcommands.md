@@ -1,62 +1,71 @@
-## Common SQL Commands
+# Common SQL Commands
 The objective of this reading is to teach you how to name and explain the main commands in SQL. SQL is the most widely used database query language. It is designed for retrieving and managing data in a relational database. SQL can be used to perform different types of operations in the database such as accessing data, describing data, manipulating data and setting users roles and privileges (permissions). 
 
 Here you will learn about the main commands used in SQL. At a later stage you will explore relevant examples of how to use these commands with a detailed explanation of the SQL syntax for key operations such as to create, insert, update and delete data in the database. 
 
-The SQL Commands are grouped into four categories known as DDL, DML, DCL and TCL depending on their functionality, namely the type of operation they’re used to perform.  Let’s explore these commands in greater detail.
+The SQL Commands are grouped into four categories known as DDL, DML, DCL and TCL depending on their functionality, namely the type of operation they’re used to perform.  Let’s explore these commands in greater detail.  
 
-**Data Definition Language (DDL)**
+
+## **Data Definition Language (DDL)**  
 The SQL DDL category provides commands for defining, deleting and modifying tables in a database. Use the following commands in this category.
 
-CREATE Command
+_**1. CREATE Command**_
 
-Purpose: To create the database or tables inside the database
+**Purpose:** To create the database or tables inside the database
 
 Syntax to create a table with three columns:
 
 ```sql
 CREATE TABLE table_name (column_name1 datatype(size), column_name2 datatype(size), column_name3 datatype(size));
-DROP Command 
 ```
 
-Purpose: To delete a database or a table inside the database. 
+_**2. DROP Command**_
+
+**Purpose:** To delete a database or a table inside the database. 
 
 Syntax to drop a table:
 
-1
+``` sql
 DROP TABLE table_name;
+```
 
-ALTER Command 
+_**3. ALTER Command**_
 
-Purpose: To change the structure of the tables in the database such as changing the name of a table, adding a primary key to a table, or adding or deleting a column in a table.
+**Purpose:** To change the structure of the tables in the database such as changing the name of a table, adding a primary key to a table, or adding or deleting a column in a table.
 
-Syntax to add a column into a table:          
+A. Syntax to add a column into a table:          
 
-1
+```sql
 ALTER TABLE table_name ADD (column_name datatype(size));
-      2. Syntax to add a primary key to a table:
+```
 
-1
+B. Syntax to add a primary key to a table:
+
+```sql
 ALTER TABLE table_name ADD primary key (column_name);
+```
 
-TRUNCATE Command
+_**4. TRUNCATE Command**_
 
-Purpose: To remove all records from a table, which will empty the table but not delete the table itself. 
+**Purpose:** To remove all records from a table, which will empty the table but not delete the table itself. 
 
 Syntax to truncate a table:
 
-1
+```sql
 TRUNCATE TABLE table_name;
+```
 
-COMMENT Command
+_**5. COMMENT Command**_
 
-Purpose: To add comments to explain or document SQL statements by using double dash (--) at the start of the line. Any text after the double dash will not be executed as part of the SQL statement. These comments are not there to build the database. They are only for your own use.   
+**Purpose:** To add comments to explain or document SQL statements by using double dash (--) at the start of the line. Any text after the double dash will not be executed as part of the SQL statement. These comments are not there to build the database. They are only for your own use.   
 
 Syntax to COMMENT a line in SQL: 
 
-12
+```sql
 --Retrieve all data from a table
-SELECT * FROM table_name; 
+SELECT * FROM table_name;
+```
+
 Data Query Language (DQL)
 The SQL DQL commands provide the ability to query and retrieve data from the database.  Use the following command in this category.
 
