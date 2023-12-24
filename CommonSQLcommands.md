@@ -5,7 +5,7 @@ Here you will learn about the main commands used in SQL. At a later stage you wi
 
 The SQL Commands are grouped into four categories known as DDL, DML, DCL and TCL depending on their functionality, namely the type of operation they’re used to perform.  Let’s explore these commands in greater detail.
 
-Data Definition Language (DDL)
+**Data Definition Language (DDL)**
 The SQL DDL category provides commands for defining, deleting and modifying tables in a database. Use the following commands in this category.
 
 CREATE Command
