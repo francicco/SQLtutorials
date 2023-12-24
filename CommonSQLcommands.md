@@ -6,7 +6,7 @@ Here you will learn about the main commands used in SQL. At a later stage you wi
 The SQL Commands are grouped into four categories known as DDL, DML, DCL and TCL depending on their functionality, namely the type of operation they’re used to perform.  Let’s explore these commands in greater detail.  
 
 
-## **Data Definition Language (DDL)**  
+## Data Definition Language (DDL)
 The SQL DDL category provides commands for defining, deleting and modifying tables in a database. Use the following commands in this category.
 
 _**1. CREATE Command**_
@@ -19,6 +19,7 @@ Syntax to create a table with three columns:
 CREATE TABLE table_name (column_name1 datatype(size), column_name2 datatype(size), column_name3 datatype(size));
 ```
 
+
 _**2. DROP Command**_
 
 **Purpose:** To delete a database or a table inside the database. 
@@ -28,6 +29,7 @@ Syntax to drop a table:
 ```sql
 DROP TABLE table_name;
 ```
+
 
 _**3. ALTER Command**_
 
@@ -45,15 +47,16 @@ ALTER TABLE table_name ADD (column_name datatype(size));
 ALTER TABLE table_name ADD primary key (column_name);
 ```
 
+
 _**4. TRUNCATE Command**_
 
 **Purpose:** To remove all records from a table, which will empty the table but not delete the table itself. 
 
 Syntax to truncate a table:
-
 ```sql
 TRUNCATE TABLE table_name;
 ```
+
 
 _**5. COMMENT Command**_
 
@@ -65,6 +68,7 @@ Syntax to COMMENT a line in SQL:
 --Retrieve all data from a table
 SELECT * FROM table_name;
 ```
+
 
 Data Query Language (DQL)
 The SQL DQL commands provide the ability to query and retrieve data from the database.  Use the following command in this category.
@@ -79,7 +83,7 @@ Syntax to select data from a table:
 SELECT * FROM table_name;
 ```
 
-Data Manipulation Language (DML)
+## Data Manipulation Language (DML)
 The SQL DML commands provide the ability to query, delete and update data in the database.  Use the following commands in this category.
 
 
