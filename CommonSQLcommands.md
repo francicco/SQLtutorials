@@ -33,13 +33,13 @@ _**3. ALTER Command**_
 
 **Purpose:** To change the structure of the tables in the database such as changing the name of a table, adding a primary key to a table, or adding or deleting a column in a table.
 
-A. Syntax to add a column into a table:          
+  a. Syntax to add a column into a table:          
 
-```SQL
+```sql
 ALTER TABLE table_name ADD (column_name datatype(size));
 ```
 
-B. Syntax to add a primary key to a table:
+  b. Syntax to add a primary key to a table:
 
 ```sql
 ALTER TABLE table_name ADD primary key (column_name);
