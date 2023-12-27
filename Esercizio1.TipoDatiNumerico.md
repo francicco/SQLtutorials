@@ -19,7 +19,7 @@ Tabella Dispositivi Mobili
 | 2         | Samsung SX  | 1200.50 |
 | 3         | Nokia 730   | 1050.00 |
 
-Nota: Devi completare questo esercizio all'interno di MySQL sulla piattaforma Coursera. Se hai dubbi su come accedervi, consulta il file README disponibile nella pagina del corso.
+Nota: Devi completare questo esercizio all'interno di MySQL. Se hai dubbi su come accedervi, consulta il file README disponibile nella pagina del corso.
 
 ### Istruzioni
 
@@ -27,7 +27,7 @@ Prova a eseguire i compiti qui sotto prima di continuare, così potrai verificar
 
 *Compito 1: Creare un database chiamato cm_devices*
 
-1. Digita la seguente istruzione SQL nell'editor terminale SQL sulla piattaforma Coursera:
+1. Digita la seguente istruzione SQL nell'editor terminale SQL:
 
 ```sql
 CREATE DATABASE cm_devices;
