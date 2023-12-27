@@ -19,11 +19,11 @@ Tabella Dispositivi Mobili
 | 2         | Samsung SX  | 1200.50 |
 | 3         | Nokia 730   | 1050.00 |
 
-Nota: Devi completare questo esercizio all'interno di MySQL. Se hai dubbi su come accedervi, consulta il file README disponibile nella pagina del corso.
+Nota: Devi completare questo esercizio all'interno di MySQL. Se hai dubbi su come accedervi, consulta il materiale del corso.
 
 ### Istruzioni
 
-Prova a eseguire i compiti qui sotto prima di continuare, così potrai verificare e confrontare le tue risposte con la nostra soluzione.
+
 
 *Compito 1: Creare un database chiamato cm_devices*
 
@@ -41,9 +41,9 @@ CREATE DATABASE cm_devices;
 USE cm_devices;
 ```
 
-4. La parola chiave SQL 'USE' è utilizzata per selezionare un database in MySQL seguita dal nome del database. Premi Invio per eseguire la query. L'output sarà "Database changed", come dimostrato nella seguente schermata:
+4. La parola chiave SQL 'USE' è utilizzata per selezionare un database in MySQL seguita dal nome del database. Premi Invio per eseguire la query. L'output sarà "Database changed":
 
-[Schermata con la dichiarazione cm_devices](URL_dell'immagine)
+
 
 *Compito 2: Creare un'istruzione SQL con attributi e tipi di dati rilevanti*
 
@@ -84,4 +84,50 @@ SHOW tables;
 
 3.7 Premi Invio.
 
-L'istruzione SHOW tables mostra tutte le
+Lo statement SHOW tables mostra tutte le tabelle. La tabella Devices è ora visibile.
+Per controllare la struttura della tabella devices, digita la seguente istruzione SQL e premi Invio:
+
+```sql
+SHOW columns FROM devices;
+```
+
+Questo mostra tutte le colonne e i tipi di dati della tabella devices.
+
+Vengono visualizzate tutte le colonne e i tipi di dati della tabella devices.
+
+In questo esercizio, hai esercitato come definire tipi di dati numerici in un database. Ecco un compito aggiuntivo (opzionale) per testare le tue competenze.
+
+Compito aggiuntivo (opzionale)
+
+Il signor Merkel desidera creare un'altra tabella di base nel database per memorizzare dati sullo stock dei dispositivi, inclusi l'ID del dispositivo, la quantità disponibile nello stock e il costo totale disponibile della quantità. Questa tabella di base è mostrata nella tabella sottostante, con ogni colonna che mostra l'ID del dispositivo, la quantità in stock e il prezzo totale.
+
+Tabella Stock
+
+| Device ID | Quantity | Total price |
+|-----------|----------|-------------|
+| 1         | 5        | 5000.75     |
+| 2         | 3        | 3500.50     |
+
+Sulla base della tabella e delle informazioni fornite, completa quanto segue:
+
+1. Identifica un nome appropriato per la tabella da creare, dati i dati forniti.
+
+2. Identifica le colonne che dovrebbero essere presenti in questa tabella e definiscile con i tipi di dati appropriati.
+
+3. Scrivi l'intera istruzione SQL che crea la tabella e le colonne.
+
+Soluzione:
+
+1: Nome tabella: Stock
+
+2: Device id INT
+
+   Quantità INT
+
+   Costo totale Decimal
+
+3: 
+
+```sql
+CREATE TABLE stock (deviceID int, quantity int, totalPrice decimal);
+```
