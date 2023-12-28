@@ -48,21 +48,13 @@ CREATE TABLE players (playerID int, playerName varchar(50), age int);
 
 5. Premi Invio per eseguire l'istruzione SQL.
 
-   L'immagine sotto mostra l'output dopo l'esecuzione dell'istruzione CREATE TABLE players.
-
-   ![Screenshot dell'istruzione SQL CREATE TABLE](immagine_sql_create_table.png)
-
-   Se hai seguito correttamente tutti i passaggi, dovresti ora vedere la tabella dei giocatori creata all'interno del database football_club digitando la seguente istruzione show tables:
+Se hai seguito correttamente tutti i passaggi, dovresti ora vedere la tabella dei giocatori creata all'interno del database football_club digitando la seguente istruzione show tables:
 
 ```sql
 SHOW tables;
 ```
 
 6. Premi Invio per visualizzare la tabella dei giocatori all'interno del database football_club. Potrebbero essere presenti altre tabelle se ne hai già create altre all'interno di questo database.
-
-   L'immagine sotto mostra l'output dell'istruzione SHOW tables. La tabella dei giocatori è ora visibile.
-
-   ![Screenshot dell'istruzione SQL SHOW tables](immagine_sql_show_tables.png)
 
 In questo esercizio, hai praticato come creare una tabella di base all'interno di un database. Ecco un compito aggiuntivo facoltativo per testare le tue abilità.
 
