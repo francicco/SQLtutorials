@@ -70,7 +70,7 @@ exit;
 ## Visualizza Database
 
 ```sql
-SHOW DATABASES
+SHOW DATABASES;
 ```
 
 ## Crea Database
@@ -123,13 +123,19 @@ SHOW TABLES;
 ## Inserisci Riga / Record
 
 ```sql
-INSERT INTO users (first_name, last_name, email, password, location, dept, is_admin, register_date) values ('Brad', 'Traversy', 'brad@gmail.com', '123456','Massachusetts', 'development', 1, now());
+INSERT INTO users (first_name, last_name, email, password, location, dept, is_admin, register_date) values ('Marco', 'Rossi', 'marco@gmail.com', '123456','Ancona', 'development', 1, now());
 ```
 
 ## Inserisci Più Righe
 
 ```sql
-INSERT INTO users (first_name, last_name, email, password, location, dept,  is_admin, register_date) values ('Fred', 'Smith', 'fred@gmail.com', '123456', 'New York', 'design', 0, now()), ('Sara', 'Watson', 'sara@gmail.com', '123456', 'New York', 'design', 0, now()),('Will', 'Jackson', 'will@yahoo.com', '123456', 'Rhode Island', 'development', 1, now()),('Paula', 'Johnson', 'paula@yahoo.com', '123456', 'Massachusetts', 'sales', 0, now()),('Tom', 'Spears', 'tom@yahoo.com', '123456', 'Massachusetts', 'sales', 0, now());
+INSERT INTO users (first_name, last_name, email, password, location, dept, is_admin, register_date)
+VALUES
+  ('Marco', 'Rossi', 'marco@gmail.com', '123456', 'Ancona', 'design', 0, NOW()),
+  ('Giulia', 'Bianchi', 'giulia@gmail.com', '123456', 'Milan', 'design', 0, NOW()),
+  ('Luca', 'Conti', 'luca@yahoo.com', '123456', 'Naples', 'development', 1, NOW()),
+  ('Elena', 'Ferrari', 'elena@yahoo.com', '123456', 'Venice', 'sales', 0, NOW()),
+  ('Alessio', 'Ricci', 'alessio@yahoo.com', '123456', 'Florence', 'sales', 0, NOW());
 ```
 
 ## Seleziona
@@ -142,8 +148,8 @@ SELECT first_name, last_name FROM users;
 ## Clausola Where
 
 ```sql
-SELECT * FROM users WHERE location='Massachusetts';
-SELECT * FROM users WHERE location='Massachusetts' AND dept='sales';
+SELECT * FROM users WHERE location='Ancona';
+SELECT * FROM users WHERE location='Ancona' AND dept='ingegneria';
 SELECT * FROM users WHERE is_admin = 1;
 SELECT * FROM users WHERE is_admin > 0;
 ```
