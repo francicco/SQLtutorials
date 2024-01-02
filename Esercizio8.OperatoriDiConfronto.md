@@ -1,3 +1,4 @@
+# Operatori di confronto
 In questa lettura imparerai di più sugli operatori di confronto SQL. Hai già appreso sugli operatori di confronto in SQL che vengono utilizzati per formare condizioni per filtrare i dati. Gli operatori di confronto sono utili quando vuoi scrivere condizioni nella clausola WHERE di una dichiarazione SELECT per filtrare i record da una tabella. L'obiettivo principale di questa lettura è presentare ulteriori esempi di come questi operatori di confronto possono essere utilizzati, insieme a scenari più avanzati.
 
 **Rinfrescando gli operatori di confronto SQL:**
