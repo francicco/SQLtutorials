@@ -122,8 +122,9 @@ CREATE TABLE menu_item(
     description VARCHAR(255), 
     price FLOAT, 
     availability INT, 
+    menu_id INT, 
     PRIMARY KEY (menu_item_id), 
-    FOREIGN KEY (menu_id) REFERENCES menu(menu_id)
+    FOREIGN KEY (menu_id) REFERENCES menu(menu_id) 
 );
 ```
 
