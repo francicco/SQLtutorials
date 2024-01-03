@@ -17,7 +17,7 @@ Fondamentalmente, uno schema di database consiste in:
 ## **Costruzione di uno schema di database per uno scenario di prenotazione di un ristorante**
 Nella costruzione di uno schema di database per un sistema di prenotazione di un ristorante, ci sono alcune cose da considerare. Si deve considerare che i clienti fanno prenotazioni per tavoli e quei tavoli hanno ordini associati. Un ordine avrà elementi del menu associati che appartengono a un menu. E gli ordini sono serviti da un cameriere.
 
-**Lo schema di database logico**
+### **Lo schema di database logico**
 Ora esaminiamo come costruire uno schema di database logico per questo scenario. In un esempio come questo, gli ingegneri di database disegnano generalmente un diagramma noto come ER-D (Entity Relationship Diagram).
 
 Lo schema di database logico è composto da entità che diventano tabelle nella progettazione fisica del database. Ogni entità ha un insieme di attributi e uno di essi (a volte anche due) rende ogni istanza dell'entità, o riga di dati, unica. Questi attributi sono noti come chiave primaria. Questi attributi di chiave primaria sono presenti anche in altre tabelle a cui la tabella è correlata. In una tabella correlata, questa chiave è nota come chiave esterna.
@@ -25,7 +25,7 @@ Lo schema di database logico è composto da entità che diventano tabelle nella 
 Questo è lo schema logico o l'ER-D per lo scenario.
 ![image](https://github.com/francicco/SQLtutorials/assets/9006870/f1581616-a9af-4869-933e-cd37fe9a68a8)
 
-## **Lo schema di database fisico**
+### **Lo schema di database fisico**
 Ora costruiamo lo schema di database fisico per questo scenario sulla base dello schema di database logico progettato nella sezione precedente. Il primo passo è creare il database del ristorante.
 
 Per creare il database del ristorante, la sintassi SQL CREATE DATABASE è la seguente:
