@@ -8,6 +8,7 @@ Il filtraggio avviene in base a una condizione. La condizione può essere scritt
 
 ## Operatori di confronto
 |Operatore             | Descrizione|
+|-----------|------------------------|
 |=                              | Verifica se i valori di due operandi sono uguali o meno. Se sì, la condizione diventa vera.|
 |!=                            | Verifica se i valori di due operandi sono uguali o meno. Se i valori non sono uguali, la condizione diventa vera.|
 |<>                           | Verifica se i valori di due operandi sono uguali o meno. Se i valori non sono uguali, la condizione diventa vera.|
@@ -19,18 +20,19 @@ Il filtraggio avviene in base a una condizione. La condizione può essere scritt
 |!>                           | Verifica se il valore del primo operando non è maggiore del valore del secondo operando. Se sì, la condizione diventa vera.|
 
 ## Operatori logici
-Operatore             | Descrizione
-ALL                      | Utilizzato per confrontare un singolo valore con tutti i valori in un altro insieme di valori.
-AND                   | Consente l'esistenza di condizioni multiple nella clausola WHERE di uno statement SQL.
-ANY                   | Utilizzato per confrontare un valore con qualsiasi valore applicabile nell'elenco secondo la condizione.
-BETWEEN           | Utilizzato per cercare valori che si trovano all'interno di un insieme di valori, dato il valore minimo e il valore massimo.
-EXISTS                | Utilizzato per cercare la presenza di una riga in una tabella specificata che soddisfa un certo criterio.
-IN                     | Utilizzato per confrontare un valore con un elenco di valori letterali specificati.
-LIKE                  | Utilizzato per confrontare un valore con valori simili utilizzando operatori jolly.
-NOT                   | Inverte il significato dell'operatore logico con cui è utilizzato. Ad esempio: NOT EXISTS, NOT BETWEEN, NOT IN, ecc. Questo è un operatore di negazione.
-OR                    | Utilizzato per combinare condizioni multiple nella clausola WHERE di uno statement SQL.
-IS NULL           | Utilizzato per confrontare un valore con un valore NULL.
-UNIQUE             | Cerca ogni riga di una tabella specificata per l'unicità (nessun duplicato).
+|Operatore             | Descrizione|
+|-----------|------------------------|
+|ALL                      | Utilizzato per confrontare un singolo valore con tutti i valori in un altro insieme di valori.|
+|AND                   | Consente l'esistenza di condizioni multiple nella clausola WHERE di uno statement SQL.|
+|ANY                   | Utilizzato per confrontare un valore con qualsiasi valore applicabile nell'elenco secondo la condizione.|
+|BETWEEN           | Utilizzato per cercare valori che si trovano all'interno di un insieme di valori, dato il valore minimo e il valore massimo.|
+|EXISTS                | Utilizzato per cercare la presenza di una riga in una tabella specificata che soddisfa un certo criterio.|
+|IN                     | Utilizzato per confrontare un valore con un elenco di valori letterali specificati.|
+|LIKE                  | Utilizzato per confrontare un valore con valori simili utilizzando operatori jolly.|
+|NOT                   | Inverte il significato dell'operatore logico con cui è utilizzato. Ad esempio: NOT EXISTS, NOT BETWEEN, NOT IN, ecc. Questo è un operatore di negazione.|
+|OR                    | Utilizzato per combinare condizioni multiple nella clausola WHERE di uno statement SQL.|
+|IS NULL           | Utilizzato per confrontare un valore con un valore NULL.|
+|UNIQUE             | Cerca ogni riga di una tabella specificata per l'unicità (nessun duplicato).|
 
 Utilizzando il database di esempio, esaminiamo un esempio che utilizza l'operatore di confronto > (maggiore di) per formulare la condizione della clausola WHERE per i criteri di filtraggio. Se desideri recuperare le fatture che hanno un valore totale superiore a $2, dovrai filtrare i record nella tabella delle fatture utilizzando la clausola WHERE nello statement SELECT.
 
