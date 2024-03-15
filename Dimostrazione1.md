@@ -1,5 +1,5 @@
-Key SQL Concepts to Learn
-Basic Commands
+# Concetti chiave in SQL
+## Comandi Base
 SQL commands can be categorized into entities that manage the structure of the database schema (DDL - Data Definition Language), control the content of the database tables (DML - Data Manipulation Language), and access and work on the data within the database (DQL - Data Query Language). You'll want to start here to lay a solid foundation.
 
 DML Commands:
