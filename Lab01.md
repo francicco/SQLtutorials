@@ -1,11 +1,11 @@
 # Obiettivo
 
-L'obiettivo di questo esercizio è farti imparare come utilizzare le clausole SQL ORDER BY e WHERE per ordinare e filtrare i dati.
+L'obiettivo di questo esercizio è imparare l'utilizzo delle clausole SQL `ORDER BY` e `WHERE` per ordinare e filtrare i dati.
 
 ## Obiettivi
 
-1. Utilizzare la clausola SQL ORDER BY per ordinare il risultato di una query.
-2. Utilizzare la clausola SQL WHERE per specificare una condizione per il filtraggio dei record.
+1. Utilizzare la clausola SQL `ORDER BY` per ordinare il risultato di una query.
+2. Utilizzare la clausola SQL `WHERE` per specificare una condizione per il filtraggio dei record.
 
 Esempio del database Chinook
 
@@ -73,15 +73,15 @@ VALUES (6, 'Jennifer', 'Peterson', 'Rogers Canada', '700 W Pender Street', 'Vanc
 
 Prova a completare i seguenti compiti prima di continuare, in modo da poter verificare e confrontare le tue risposte con la nostra soluzione.
 
-Compito 1: Scrivi una dichiarazione SQL per visualizzare tutti i dati esistenti nella tabella dei clienti.
+Compito 1: Scrivi una query SQL per visualizzare tutti i dati esistenti nella tabella dei clienti.
 
-Compito 2: Scrivi una dichiarazione SQL per ordinare il set di risultati in ordine ascendente per il nome.
+Compito 2: Scrivi una query SQL per ordinare il set di risultati in ordine ascendente per il nome.
 
 Compito 3: Filtra i dati del set di risultati in base a una condizione in cui il paese è la Francia.
 
 Compito 1: Visualizza i dati nella tabella dei clienti
 
-Prima di iniziare a ordinare e filtrare i dati, visualizziamo alcuni dei dati dei clienti già presenti nel database. Ciò può essere fatto scrivendo la seguente dichiarazione SELECT, che recupera tutti i dati dalla tabella dei clienti.
+Prima di iniziare a ordinare e filtrare i dati, visualizziamo alcuni dei dati dei clienti già presenti nel database. Ciò può essere fatto scrivendo la seguente query `SELECT`, che recupera tutti i dati dalla tabella dei clienti.
 
 ```sql
 SELECT CustomerID, FirstName, LastName, City, State, Country FROM Customer;
@@ -95,7 +95,7 @@ Ora vedrai molti dati sui clienti visualizzati sullo schermo, il che rende diffi
 
 Compito 2: Ordina il set di risultati dei dati
 
-Puoi semplificare la ricerca per gli utenti del database ordinando i dati. Ad esempio, puoi ordinare i dati in ordine alfabetico da A a Z utilizzando i nomi dei primi clienti. Ciò può essere fatto aggiungendo la clausola ORDER BY alla precedente dichiarazione SQL come segue.
+Puoi semplificare la ricerca per gli utenti del database ordinando i dati. Ad esempio, puoi ordinare i dati in ordine alfabetico da A a Z utilizzando i nomi dei primi clienti. Ciò può essere fatto aggiungendo la clausola ORDER BY alla precedente query SQL come segue.
 
 ```sql
 SELECT CustomerID, FirstName, LastName, City, State, Country
@@ -109,7 +109,7 @@ Compito 3: Filtra il set di risultati dei dati
 
 Puoi rendere ancora più facile per gli utenti trovare clienti specifici filtrando i dati in base a determinati criteri. Ad esempio, puoi estrarre un elenco di clienti che provengono da un paese specifico.
 
-In questo caso, puoi aggiungere la condizione alla precedente dichiarazione SQL utilizzando la clausola "WHERE" come mostrato di seguito e premere Invio per eseguire la query.
+In questo caso, puoi aggiungere la condizione alla precedente query SQL utilizzando la clausola "WHERE" come mostrato di seguito e premere Invio per eseguire la query.
 
 ```sql
 SELECT *
@@ -117,11 +117,11 @@ FROM Customer
 WHERE Country = "Canada";
 ```
 
-Il risultato della dichiarazione SQL mostra tutti i clienti solo dal Canada.
+Il risultato della query SQL mostra tutti i clienti solo dal Canada.
 
 Per renderlo ancora migliore, puoi visualizzare tutti i clienti in Canada con l'ordine alfabetico da A a Z!
 
-Per farlo, puoi aggiungere la clausola ORDER BY alla fine della precedente dichiarazione SQL come segue:
+Per farlo, puoi aggiungere la clausola ORDER BY alla fine della precedente query SQL come segue:
 
 ```sql
 SELECT *
@@ -130,15 +130,15 @@ WHERE Country = "Canada"
 ORDER BY FirstName;
 ```
 
-Il risultato della dichiarazione SQL mostra ora tutti i clienti dal Canada con l'ordine alfabetico corretto.
+Il risultato della query SQL mostra ora tutti i clienti dal Canada con l'ordine alfabetico corretto.
 
 Hai ora imparato come ordinare e filtrare i dati utilizzando le clausole SQL ORDER BY e WHERE.
 
 # Esercizio aggiuntivo (opzionale)
 
-Devi scrivere una dichiarazione SQL per visualizzare solo il nome e il paese dei clienti provenienti dal Canada.
+Devi scrivere una query SQL per visualizzare solo il nome e il paese dei clienti provenienti dal Canada.
 
-Una volta completata la dichiarazione SQL, esegui la query.
+Una volta completata la query SQL, esegui la query.
 
 Soluzione
 
