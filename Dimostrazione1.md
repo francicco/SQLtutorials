@@ -241,9 +241,60 @@ MODIFY COLUMN `GeneName` VARCHAR(50);
 ```
 
 ```sql
+SELECT `OGid` FROM `AnalisiOG` WHERE `Intensified` = 1;
+```
+
+```sql
 SELECT Chr, COUNT(*) AS chr_count FROM CNEEtable GROUP BY Chr ORDER BY chr_count DESC;
 ```
 
 ```sql
+SELECT `OGid` FROM `AnalisiOG`
+WHERE `Intensified` = 1
+AND `CSUBST` = 1;
+```
+
+```sql
+SELECT count(`OGid`) FROM `AnalisiOG`
+WHERE `Intensified` = 1
+AND `CSUBST` = 1;
+```
+
+```sql
 SELECT COUNT(BUSTEDPH) AS BUSTEDPH_count FROM `AnalisiOG`;
+```
+
+```sql
+SELECT * FROM `CNEEtable`
+WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
+					WHERE `Intensified` = 1
+					AND `CSUBST` = 1);
+```
+```sql
+SELECT
+	SUBSTRING_INDEX(`CNEEid`, '.', 1) AS `id`,
+	SUBSTRING_INDEX(`CNEEid`, '.', 2) AS `gene`
+FROM `CNEEtable`
+WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
+					WHERE `Intensified` = 1
+					AND `CSUBST` = 1);
+```
+
+
+```sql
+SELECT * FROM `phyloAccCNEE`
+WHERE `CNEEid` IN (SELECT `CNEEid` FROM `CNEEtable`
+                    WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
+                                        WHERE `Intensified` = 1
+                                        AND `CSUBST` = 1));
+```
+
+```sql
+SELECT * FROM `phyloAccCNEE`
+WHERE `CNEEid` IN (SELECT
+					SUBSTRING_INDEX(`CNEEid`, '.', 1) AS `id`
+					FROM `CNEEtable`
+					WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
+										WHERE `Intensified` = 1
+										AND `CSUBST` = 1));
 ```
