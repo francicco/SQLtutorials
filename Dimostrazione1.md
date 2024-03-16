@@ -120,7 +120,122 @@ phyloacc.id	original.id	best.fit.model	marginal.likelihood.m0	marginal.likelihoo
 160-10	CNEE7951895887.Hmel213001oG55	M0	-685.59165	-686.95241	-689.69476	-1.3607584	2.7423512	-4.10311	0.107191	1	0.109689	1.90383	0.107945	1.83522	1	3	Htim,Hheu,Hpac,Hcyd,Hmel,Hhel,Hatt,Helv,Hpar,Heth,Hism,Hnum,Hbes,Hnat,Hwal,Hbur,Hege,Hxan,Hhie,Hheb,Haoe,Hsap,Hhew,Hcon,Hele,Hant,Hsar,Hleu,Hric,Hdem,Hert,Hper,Hcha,Hhim,Hlat,Heet,Herd,Hpet,Hher,Hhec,Hhor,Hcly,Htel,Elyb,Etal,Eali,Evib,Elam,Eisa,Avcr,Avpe,Avfl,Djun,Ptel,Diul,Dpha,Pdid,Hel00,Hel01,Hel02,Hel03,Hel04,Hel05,Hel06,Hel07,Hel08,Hel09,Hel10,Hel11,MelpomeneSilvaniformis,Hel12,Wallacei,WallaceiMelpomeneSilvaniformis,Hel13,Hel14,Doris,DorisWallaceiMelpomeneSilvaniformis,AoedesDorisWallaceiMelpomeneSilvaniformis,Hel15,Hel16,Hel17,Hel18,Hel19,Hel20,Hel21,Hel22,Hel23,Hel24,SaraSapho,Hel25,Hel26,Hel27,Hel28,Hel29,Hel30,Hel31,Hel32,Erato,EratoSaraSapho,Heliconius,Eu01,Eu02,Eu03,Eu04,Eueides,EueidesHeliconius,Au01,Agraulis,DioneAgraulis,DioneAgraulisEueidesHeliconius,N01,N02,OtherGenera,Heliconiini	Hdor	Htim,Hheu,Hpac,Hcyd,Hmel,Hhel,Hatt,Helv,Hpar,Heth,Hism,Hnum,Hbes,Hnat,Hwal,Hbur,Hxan,Hhie,Hheb,Haoe,Hsap,Hhew,Hcon,Hele,Hant,Hsar,Hleu,Hric,Hdem,Hert,Hper,Hcha,Hhim,Hlat,Heet,Herd,Hpet,Hher,Hhec,Hhor,Htel,Elyb,Etal,Eali,Evib,Elam,Eisa,Avcr,Avpe,Avfl,Djun,Ptel,Diul,Dpha,Pdid,Hel00,Hel01,Hel02,Hel03,Hel04,Hel05,Hel06,Hel07,Hel08,Hel09,Hel10,Hel11,MelpomeneSilvaniformis,Hel12,Wallacei,WallaceiMelpomeneSilvaniformis,Hel13,Hel14,Doris,DorisWallaceiMelpomeneSilvaniformis,AoedesDorisWallaceiMelpomeneSilvaniformis,Hel15,Hel16,Hel17,Hel18,Hel19,Hel20,Hel21,Hel22,Hel23,Hel24,SaraSapho,Hel25,Hel26,Hel27,Hel28,Hel29,Hel30,Hel31,Hel32,Erato,EratoSaraSapho,Heliconius,Eu01,Eu02,Eu03,Eu04,Eueides,EueidesHeliconius,Au01,Agraulis,DioneAgraulis,DioneAgraulisEueidesHeliconius,N01,N02,OtherGenera,Heliconiini	Hege,Hdor,Hcly
 160-11	CNEE7951995933.Hmel213001oG55	M2	-1098.2348	-1101.7252	-1093.2795	-3.4903709	-8.4457401	4.9553	0.102962	1	0.102993	1.91317	0.0929403	1.62384	1	5	Htim,Hheu,Hpac,Hcyd,Hmel,Hhel,Hatt,Helv,Hpar,Heth,Hism,Hnum,Hbes,Hnat,Hwal,Hbur,Hege,Hdor,Hxan,Hhie,Hheb,Haoe,Hsap,Hhew,Hcon,Hele,Hant,Hsar,Hric,Hdem,Hert,Hper,Hcha,Hhim,Hlat,Heet,Herd,Hpet,Hher,Hhec,Hhor,Hcly,Htel,Elyb,Etal,Eali,Evib,Elam,Eisa,Avcr,Avpe,Avfl,Djun,Ptel,Diul,Dpha,Pdid,Smor,Mcin,Jcoe,Hel00,Hel01,Hel02,Hel03,Hel04,Hel05,Hel06,Hel07,Hel08,Hel09,Hel10,Hel11,MelpomeneSilvaniformis,Hel12,Wallacei,WallaceiMelpomeneSilvaniformis,Hel13,Hel14,Doris,DorisWallaceiMelpomeneSilvaniformis,AoedesDorisWallaceiMelpomeneSilvaniformis,Hel15,Hel16,Hel17,Hel18,Hel19,Hel20,Hel21,Hel22,Hel23,Hel24,SaraSapho,Hel25,Hel26,Hel27,Hel28,Hel29,Hel30,Hel31,Hel32,Erato,EratoSaraSapho,Heliconius,Eu01,Eu02,Eu03,Eu04,Eueides,EueidesHeliconius,Au01,Agraulis,DioneAgraulis,DioneAgraulisEueidesHeliconius,N01,N02,OtherGenera,Heliconiini,Heliconiinae	Hleu	Htim,Hheu,Hcyd,Hmel,Hhel,Hatt,Helv,Hpar,Heth,Hism,Hnum,Hbes,Hnat,Hwal,Hbur,Hege,Hdor,Hxan,Hheb,Haoe,Hsap,Hhew,Hcon,Hele,Hsar,Hric,Hdem,Hert,Hper,Hcha,Hhim,Hlat,Heet,Herd,Hpet,Hher,Hhec,Hhor,Hcly,Htel,Elyb,Etal,Evib,Elam,Eisa,Avcr,Avpe,Avfl,Djun,Ptel,Diul,Dpha,Pdid,Smor,Mcin,Jcoe,Hel00,Hel01,Hel02,Hel03,Hel04,Hel05,Hel06,Hel07,Hel08,Hel09,Hel10,Hel11,MelpomeneSilvaniformis,Hel12,Wallacei,WallaceiMelpomeneSilvaniformis,Hel13,Hel14,Doris,DorisWallaceiMelpomeneSilvaniformis,AoedesDorisWallaceiMelpomeneSilvaniformis,Hel15,Hel16,Hel17,Hel18,Hel19,Hel20,Hel21,Hel22,Hel23,Hel24,SaraSapho,Hel25,Hel26,Hel27,Hel28,Hel29,Hel30,Hel31,Hel32,Erato,EratoSaraSapho,Heliconius,Eu01,Eu02,Eu03,Eu04,Eueides,EueidesHeliconius,Au01,Agraulis,DioneAgraulis,DioneAgraulisEueidesHeliconius,N01,N02,OtherGenera,Heliconiini,Heliconiinae	Hpac,Hhie,Hant,Hleu,Eali
 160-12	CNEE7952095971.Hmel213001oG55	M2	-1087.6404	-1088.986	-1047.8082	-1.3456007	-41.177761	39.8322	0.0525832	1	0.0533277	1.93858	0.0381435	1.52474	0	2	Htim,Hheu,Hpac,Hcyd,Hmel,Hhel,Hatt,Helv,Hpar,Heth,Hism,Hnum,Hbes,Hnat,Hwal,Hbur,Hege,Hdor,Hxan,Hhie,Hheb,Haoe,Hsap,Hhew,Hcon,Hele,Hant,Hsar,Hleu,Hric,Hdem,Hert,Hper,Hcha,Hhim,Hlat,Heet,Herd,Hpet,Hher,Hhec,Hhor,Hcly,Htel,Elyb,Etal,Eali,Evib,Elam,Eisa,Avcr,Avpe,Avfl,Djun,Ptel,Diul,Dpha,Pdid,Smor,Hel00,Hel01,Hel02,Hel03,Hel04,Hel05,Hel06,Hel07,Hel08,Hel09,Hel10,Hel11,MelpomeneSilvaniformis,Hel12,Wallacei,WallaceiMelpomeneSilvaniformis,Hel13,Hel14,Doris,DorisWallaceiMelpomeneSilvaniformis,AoedesDorisWallaceiMelpomeneSilvaniformis,Hel15,Hel16,Hel17,Hel18,Hel19,Hel20,Hel21,Hel22,Hel23,Hel24,SaraSapho,Hel25,Hel26,Hel27,Hel28,Hel29,Hel30,Hel31,Hel32,Erato,EratoSaraSapho,Heliconius,Eu01,Eu02,Eu03,Eu04,Eueides,EueidesHeliconius,Au01,Agraulis,DioneAgraulis,DioneAgraulisEueidesHeliconius,N01,N02,OtherGenera,Heliconiini,Heliconiinae		Htim,Hheu,Hpac,Hcyd,Hmel,Hhel,Hatt,Helv,Hpar,Heth,Hism,Hnum,Hbes,Hnat,Hwal,Hbur,Hege,Hdor,Hxan,Hhie,Hheb,Haoe,Hsap,Hhew,Hcon,Hele,Hant,Hsar,Hleu,Hric,Hdem,Hert,Hcha,Hhim,Hlat,Heet,Herd,Hpet,Hher,Hhec,Hhor,Htel,Elyb,Etal,Eali,Evib,Elam,Eisa,Avcr,Avpe,Avfl,Djun,Ptel,Diul,Dpha,Pdid,Smor,Hel00,Hel01,Hel02,Hel03,Hel04,Hel05,Hel06,Hel07,Hel08,Hel09,Hel10,Hel11,MelpomeneSilvaniformis,Hel12,Wallacei,WallaceiMelpomeneSilvaniformis,Hel13,Hel14,Doris,DorisWallaceiMelpomeneSilvaniformis,AoedesDorisWallaceiMelpomeneSilvaniformis,Hel15,Hel16,Hel17,Hel18,Hel19,Hel20,Hel21,Hel22,Hel23,Hel24,SaraSapho,Hel25,Hel26,Hel27,Hel28,Hel29,Hel30,Hel31,Hel32,Erato,EratoSaraSapho,Heliconius,Eu01,Eu02,Eu03,Eu04,Eueides,EueidesHeliconius,Au01,Agraulis,DioneAgraulis,DioneAgraulisEueidesHeliconius,N01,N02,OtherGenera,Heliconiini	Hper,Hcly
-...\t...\t...\t...\t...\t...\t...\t...\t...\t...\t...\t...\t...\t...\t...\t...\t...\t...\t...\t...\t
+...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  
 ```
 
-## Preparazione dei dati
+## Creazione del Database (un passo alla volta) e Preparazione dei dati.
+Iniziamo con il creare il nostro database (DB). Apriamo phpMyAdmin andando al link del nostro [localhost](http://localhost/phpmyadmin), verifichiamo che tutto funzioni, poi clicchiamo su `SQL` da qui eseguiremo i nostri comandi.
+As esempio il primo, la creazione del nostro DB.
+
+```sql
+CREATE DATABASE `GenomicRegionDB`;
+```
+e clicchiamo su `GO`.
+Avremo a questo punto creato il nostro DB che andremo a popolare con le nostre tabelle.
+Per prima cosa pero' dobbiamo attivarlo:
+
+```sql
+USE `GenomicRegionDB`;
+```
+
+### Creazione delle nostre tabelle.
+1. La prima tabella sara' quella dove ospiteremo la lista dei nostri gruppi di ortologhi e le analisi fatte su queste.
+- Qual e' il file?
+- Come vogliamo chiamare la tabella?
+- Quanti campi contiene?
+- e che tipologia di dati?
+
+Diamogli ancora un'occhiata, poi decidiamo...
+
+
+Creiamo la prima tabella `AnalisiOG` per il file `UpSetdata.tsv`
+```sql
+CREATE TABLE `AnalisiOG` (
+    `OGid` VARCHAR(25) PRIMARY KEY,
+    `BUSTEDPH` TINYINT(1) NOT NULL CHECK (`BUSTEDPH` IN (0, 1)),
+    `Relaxed` TINYINT(1) NOT NULL CHECK (`BUSTEDPH` IN (0, 1)),
+    `Intensified` TINYINT(1) NOT NULL CHECK (`Intensified` IN (0, 1)),
+    `CSUBST` TINYINT(1) NOT NULL CHECK (`CSUBST` IN (0, 1))
+);
+```
+
+Possiamo eliminarla se pensiamo di aver fatto degli errori durante la creazione:
+```
+DROP TABLE `AnalisiOG`;
+```
+
+Poi popoliamo la cartella con `LOAD DATA` se phpmyadmin ha i permessi di lettura al file,
+```
+LOAD DATA INFILE 'Path/to/UpSetdata.csv'
+INTO TABLE `AnalisiOG`
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY ''
+LINES TERMINATED BY '\n'
+IGNORE 0 LINES;
+```
+Alternativamente possiamo usare la GUI di phpMyAdmin...
+
+Per svuotare la tebella...
+```sql
+TRUNCATE TABLE AnalisiOG;
+```
+
+Il file va modificato leggermente per non avere problemi durante il caricamente dei dati...
+```
+sed 's/\t/,/g' UpSetdata.tsv | grep -v gene > UpSetdata.csv
+```
+
+2. La seconda tabella ospitera' le coordinate delle regioni conservate.
+```sql
+CREATE TABLE `CNEEtable` (
+    `Chr` VARCHAR(25),
+    `Start` INT(10),
+    `End` INT(10),
+    `CNEEid` VARCHAR(250) PRIMARY KEY,
+    `OGid` VARCHAR(25)
+);
+```
+
+e popoliamola!
+Ci sono problemi? Se si, come possiamo risolverli?
+
+3. La tabella `elem_lik.txt` e' una tabella molto grande, alcuni campi non ci interessano e ci sono delle linee commentate, che andranno levate prima di importare il file. Per prima cosa dobbiamo decidere che campi scegliere.
+
+I campi che ci interessano maggiormente saranno:
+`original.id	best.fit.model	logbf1	logbf2	logbf3	conserved.rate.m0	accel.rate.m0	conserved.rate.m1	accel.rate.m1	conserved.rate.m2	accel.rate.m2	num.accel.m1	num.accel.m2`
+Possiamo anche notare che in realta' `original.id` contiene una doppia informazione... il nome del gene in cui il CNEE si trova. Teniamolo ma diamogli un altro campo.
+Come possiamo tagliare il file e spezzare il campo `original.id`?
+
+```
+grep -v '#' elem_lik.txt | grep -v phyloacc.id | cut -f2,3,7-17 | sed 's/\./\t/' | sed 's/\t/,/g' > elem_lik.csv
+```
+
+Ok, a questo punto creaiamo la tabella:
+```sql
+CREATE TABLE `phyloAccCNEE` (
+    `CNEEid` VARCHAR(25),
+    `GeneName` VARCHAR(25),
+    `Model` CHAR(2),
+    `logbf1` float(7),
+    `logbf2` float(7),
+    `logbf3` float(7),
+    `conservedRateM0` float(7),
+    `accelRateM0` float(7),
+    `conservedRateM1` float(7),
+    `accelRateM1` float(7),
+    `conservedRateM2` float(7),
+    `accelRateM2` float(7),
+    `NumAccelM1` int(10),
+    `NumAccelM2` int(10),
+    PRIMARY KEY (CNEEid, GeneName)
+);
+```
+E importiamo la tabella...
+
+
+Forse sarebbe meglio cambiare il campo `GeneName` e cambiando la lunghezza dei caratteri.
+```sql
+ALTER TABLE `phyloAccCNEE`
+MODIFY COLUMN `GeneName` VARCHAR(50);
+```
+
