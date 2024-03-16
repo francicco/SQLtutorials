@@ -234,7 +234,7 @@ CREATE TABLE `phyloAccCNEE` (
 E importiamo la tabella...
 
 
-Forse sarebbe meglio cambiare il campo `GeneName` e cambiando la lunghezza dei caratteri.
+Forse sarebbe meglio cambiare il campo `GeneName` cambiando la lunghezza dei caratteri.
 ```sql
 ALTER TABLE `phyloAccCNEE`
 MODIFY COLUMN `GeneName` VARCHAR(50);
