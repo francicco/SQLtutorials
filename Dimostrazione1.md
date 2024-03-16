@@ -243,3 +243,7 @@ MODIFY COLUMN `GeneName` VARCHAR(50);
 ```sql
 SELECT Chr, COUNT(*) AS chr_count FROM CNEEtable GROUP BY Chr ORDER BY chr_count DESC;
 ```
+
+```sql
+SELECT COUNT(BUSTEDPH) AS BUSTEDPH_count FROM `AnalisiOG`;
+```
