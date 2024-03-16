@@ -20,10 +20,7 @@ Ho gia' eseguito differenti analisi tra cui analisi filogenetiche, cercando di r
 ## Come organizzare i dati.
 Per prima cosa scarichiamo i dati e vediamo come sono organizzati.
 Creaiamo una cartella, entriamo e scarichiamo i file
-```
-mkdir data
-cd data
-```
+
 click [qui](https://uob-my.sharepoint.com/:u:/g/personal/tk19812_bristol_ac_uk/EXRDAlk3iLhCvRKvIYVoe_wBCIR4qpZrPY-jTPDrBMXd2Q?e=xXDbTs) e scegli di scaricarlo nella cartella appena creata.
 Decomprimiamo il file e guardiamo cosa contiene
 ```
@@ -199,6 +196,10 @@ CREATE TABLE `CNEEtable` (
 e popoliamola!
 Ci sono problemi? Se si, come possiamo risolverli?
 
+```
+sed 's/\t/,/g' AllOGs.CNEEs.tsv > AllOGs.CNEEs.csv
+```
+
 3. La tabella `elem_lik.txt` e' una tabella molto grande, alcuni campi non ci interessano e ci sono delle linee commentate, che andranno levate prima di importare il file. Per prima cosa dobbiamo decidere che campi scegliere.
 
 I campi che ci interessano maggiormente saranno:
@@ -239,3 +240,6 @@ ALTER TABLE `phyloAccCNEE`
 MODIFY COLUMN `GeneName` VARCHAR(50);
 ```
 
+```sql
+SELECT Chr, COUNT(*) AS chr_count FROM CNEEtable GROUP BY Chr ORDER BY chr_count DESC;
+```
