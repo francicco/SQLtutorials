@@ -380,45 +380,7 @@ WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
 ```
 </details>
 
-<details>
-<summary>Soluzione</summary> 
-	
-```sql
-SELECT
-	SUBSTRING_INDEX(`CNEEid`, '.', 1) AS `id`,
-	SUBSTRING_INDEX(`CNEEid`, '.', 2) AS `gene`
-FROM `CNEEtable`
-WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
-		WHERE `Intensified` = 1
-		AND `CSUBST` = 1);
-```
-</details>
 
-<details>
-<summary>Soluzione</summary> 
-	
-```sql
-SELECT * FROM `phyloAccCNEE`
-WHERE `CNEEid` IN (SELECT `CNEEid` FROM `CNEEtable`
-                    WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
-                                        WHERE `Intensified` = 1
-                                        AND `CSUBST` = 1));
-```
-</details>
-
-<details>
-<summary>Soluzione</summary> 
-	
-```sql
-SELECT * FROM `phyloAccCNEE`
-WHERE `CNEEid` IN (SELECT
-			SUBSTRING_INDEX(`CNEEid`, '.', 1) AS `id`
-			FROM `CNEEtable`
-			WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
-						WHERE `Intensified` = 1
-						AND `CSUBST` = 1));
-```
-</details>
 
 #### `SELECT` per l'uso di *Joins* e *Unions*
 
@@ -518,4 +480,56 @@ UNION
 SELECT *
 FROM AnalisiOG A
 RIGHT JOIN CNEEtable C ON A.OGid = C.OGid;
+```
+
+#### `IN` per l'uso `SELECT` all'interno di altre `SELECT`
+
+<details>
+<summary>Soluzione</summary> 
+	
+```sql
+SELECT
+	SUBSTRING_INDEX(`CNEEid`, '.', 1) AS `id`,
+	SUBSTRING_INDEX(`CNEEid`, '.', 2) AS `gene`
+FROM `CNEEtable`
+WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
+		WHERE `Intensified` = 1
+		AND `CSUBST` = 1);
+```
+</details>
+
+<details>
+<summary>Soluzione</summary> 
+	
+```sql
+SELECT * FROM `phyloAccCNEE`
+WHERE `CNEEid` IN (SELECT `CNEEid` FROM `CNEEtable`
+                    WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
+                                        WHERE `Intensified` = 1
+                                        AND `CSUBST` = 1));
+```
+</details>
+
+<details>
+<summary>Soluzione</summary> 
+	
+```sql
+SELECT * FROM `phyloAccCNEE`
+WHERE `CNEEid` IN (SELECT
+			SUBSTRING_INDEX(`CNEEid`, '.', 1) AS `id`
+			FROM `CNEEtable`
+			WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
+						WHERE `Intensified` = 1
+						AND `CSUBST` = 1));
+```
+</details>
+
+```sql
+SELECT p.Model, count(*) FROM `phyloAccCNEE` p
+WHERE `CNEEid` IN (SELECT SUBSTRING_INDEX(`CNEEid`, '.', 1) AS `id`
+					FROM `CNEEtable`
+					WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
+							WHERE `Relaxed` = 1
+							AND `CSUBST` = 1))
+GROUP BY p.`Model`;
 ```
