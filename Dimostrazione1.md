@@ -412,11 +412,11 @@ WHERE `CNEEid` IN (SELECT `CNEEid` FROM `CNEEtable`
 ```sql
 SELECT * FROM `phyloAccCNEE`
 WHERE `CNEEid` IN (SELECT
-					SUBSTRING_INDEX(`CNEEid`, '.', 1) AS `id`
-					FROM `CNEEtable`
-					WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
-										WHERE `Intensified` = 1
-										AND `CSUBST` = 1));
+			SUBSTRING_INDEX(`CNEEid`, '.', 1) AS `id`
+			FROM `CNEEtable`
+			WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
+						WHERE `Intensified` = 1
+						AND `CSUBST` = 1));
 ```
 </details>
 
@@ -462,10 +462,60 @@ WHERE A.CSUBST = 1;
 ```
 	
 #### `LEFT JOIN`:
+
 ```sql
 SELECT A.*, C.*
 FROM AnalisiOG A
 LEFT JOIN CNEEtable C
 ON A.OGid = C.OGid
-WHERE A.CSUBST = 1;
+WHERE A.Relaxed = 1
+ORDER BY A.OGid;
+```
+
+E' abbastanza intuitivo vedere come il `LEFT JOIN` mostra anche i gruppi orthologhi che non hanno un corrispettivo nella tabella `CNEEtable`, cio' vuol dire che quel gene non presenta alcuna regione conservata nelle sue vicinanze.
+
+#### `RIGHT JOIN`:
+Se invece eseguiamo il `RIGHT JOIN`...
+
+```sql
+SELECT A.*, C.*
+FROM AnalisiOG A
+RIGHT JOIN CNEEtable C
+ON A.OGid = C.OGid
+WHERE A.Relaxed = 1
+ORDER BY A.OGid;
+```
+
+... quanti match troviamo rispetto al `LEFT JOIN`?
+
+<details>
+<summary>Soluzione</summary> 
+
+```sql
+SELECT count(A.OGid)
+FROM AnalisiOG A
+RIGHT JOIN CNEEtable C
+ON A.OGid = C.OGid
+WHERE A.Relaxed = 1;
+```
+```sql
+SELECT count(A.OGid)
+FROM AnalisiOG A
+LEFT JOIN CNEEtable C
+ON A.OGid = C.OGid
+WHERE A.Relaxed = 1;
+```
+</details>
+
+#### `FULL JOIN`:
+La `FULL JOIN` rappresenta l'unione dei due insiemi e in mySQL puo' essere ottenuta con il comando `UNION`
+
+```sql
+SELECT *
+FROM AnalisiOG A
+LEFT JOIN CNEEtable C ON A.OGid = C.OGid
+UNION
+SELECT *
+FROM AnalisiOG A
+RIGHT JOIN CNEEtable C ON A.OGid = C.OGid;
 ```
