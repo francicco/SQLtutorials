@@ -305,7 +305,7 @@ MODIFY COLUMN `GeneName` VARCHAR(50);
 
 Ora Carichiamo i dati e finiamo di popolare il nostro DB.
 
-### Esplorazioni dei dati: uso di `SELECT`.
+## Esplorazioni dei dati: uso di `SELECT`.
 
 Per prima cosa possiamo iniziare con il chiederci quanti geni sono stati usati in questo esperimento?
 Come possiamo estrarre questo dato?
@@ -382,7 +382,7 @@ WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
 
 
 
-#### `SELECT` per l'uso di *Joins* e *Unions*
+### - `SELECT` per l'uso di *Joins* e *Unions*
 
 Il comando `SELECT` puo' anche essere usato per creare *join*: che aiutano a combinare i dati di più tabelle in base a una colonna correlata tra loro; e le *union*: che invece consentono di combinare i set di risultati di due o più istruzioni `SELECT`.
 Entrambi sono fondamentali per sfruttare tutta la potenza delle query SQL.
@@ -482,7 +482,7 @@ FROM AnalisiOG A
 RIGHT JOIN CNEEtable C ON A.OGid = C.OGid;
 ```
 
-#### `IN` per l'uso `SELECT` all'interno di altre `SELECT`
+### - `IN` per l'uso `SELECT` all'interno di altre `SELECT`
 
 <details>
 <summary>Soluzione</summary> 
