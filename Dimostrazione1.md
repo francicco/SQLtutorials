@@ -125,6 +125,7 @@ Iniziamo con il creare il nostro database (DB). Apriamo phpMyAdmin andando al li
 As esempio il primo, la creazione del nostro DB.
 
 <details>
+<summary>Soluzione</summary>
 	
 ```sql
 CREATE DATABASE `GenomicRegionDB`;
@@ -136,6 +137,7 @@ Avremo a questo punto creato il nostro DB che andremo a popolare con le nostre t
 Per prima cosa pero' dobbiamo attivarlo:
 
 <details>
+<summary>Soluzione</summary>
 	
 ```sql
 USE `GenomicRegionDB`;
@@ -154,6 +156,7 @@ Diamogli ancora un'occhiata, poi decidiamo...
 
 Creiamo la prima tabella `AnalisiOG` per il file `UpSetdata.tsv`
 <details>
+<summary>Soluzione</summary>
 	
 ```sql
 CREATE TABLE `AnalisiOG` (
@@ -169,8 +172,9 @@ CREATE TABLE `AnalisiOG` (
 Possiamo eliminarla se pensiamo di aver fatto degli errori durante la creazione:
 
 <details>
+<summary>Soluzione</summary>
 	
-```
+```sql
 DROP TABLE `AnalisiOG`;
 ```
 </details>
@@ -178,6 +182,7 @@ DROP TABLE `AnalisiOG`;
 Poi popoliamo la cartella con `LOAD DATA` se phpmyadmin ha i permessi di lettura al file,
 
 <details>
+<summary>Soluzione</summary>
 	
 ```sql
 LOAD DATA INFILE 'Path/to/UpSetdata.csv'
@@ -194,6 +199,7 @@ Alternativamente possiamo usare la GUI di phpMyAdmin...
 Per svuotare la tebella...
 
 <details>
+<summary>Soluzione</summary>
 	
 ```sql
 TRUNCATE TABLE AnalisiOG;
@@ -203,8 +209,9 @@ TRUNCATE TABLE AnalisiOG;
 Il file va modificato leggermente per non avere problemi durante il caricamente dei dati...
 
 <details>
+<summary>Soluzione</summary>
 	
-```
+```bash
 sed 's/\t/,/g' UpSetdata.tsv | grep -v gene > UpSetdata.csv
 ```
 </details>
@@ -212,6 +219,7 @@ sed 's/\t/,/g' UpSetdata.tsv | grep -v gene > UpSetdata.csv
 2. La seconda tabella ospitera' le coordinate delle regioni conservate.
 
 <details>
+<summary>Soluzione</summary>
 	
 ```sql
 CREATE TABLE `CNEEtable` (
@@ -228,8 +236,9 @@ e popoliamola!
 Ci sono problemi? Se si, come possiamo risolverli?
 
 <details>
+<summary>Soluzione</summary>
 	
-```
+```bash
 sed 's/\t/,/g' AllOGs.CNEEs.tsv > AllOGs.CNEEs.csv
 ```
 </details>
@@ -237,13 +246,15 @@ sed 's/\t/,/g' AllOGs.CNEEs.tsv > AllOGs.CNEEs.csv
 3. La tabella `elem_lik.txt` e' una tabella molto grande, alcuni campi non ci interessano e ci sono delle linee commentate, che andranno levate prima di importare il file. Per prima cosa dobbiamo decidere che campi scegliere.
 
 I campi che ci interessano maggiormente saranno:
+
 `original.id	best.fit.model	logbf1	logbf2	logbf3	conserved.rate.m0	accel.rate.m0	conserved.rate.m1	accel.rate.m1	conserved.rate.m2	accel.rate.m2	num.accel.m1	num.accel.m2`
 Possiamo anche notare che in realta' `original.id` contiene una doppia informazione... il nome del gene in cui il CNEE si trova. Teniamolo ma diamogli un altro campo.
 Come possiamo tagliare il file e spezzare il campo `original.id`?
 
 <details>
+<summary>Soluzione</summary>
 	
-```
+```bash
 grep -v '#' elem_lik.txt | grep -v phyloacc.id | cut -f2,3,7-17 | sed 's/\./\t/' | sed 's/\t/,/g' > elem_lik.csv
 ```
 </details>
@@ -251,6 +262,7 @@ grep -v '#' elem_lik.txt | grep -v phyloacc.id | cut -f2,3,7-17 | sed 's/\./\t/'
 Ok, a questo punto creaiamo la tabella:
 
 <details>
+<summary>Soluzione</summary>
 	
 ```sql
 CREATE TABLE `phyloAccCNEE` (
@@ -275,10 +287,15 @@ CREATE TABLE `phyloAccCNEE` (
 
 E importiamo la tabella...
 
-
-Forse sarebbe meglio cambiare il campo `GeneName` cambiando la lunghezza dei caratteri.
-
+C'e' qualcosa che non va? Se si, cosa?
 <details>
+<summary>Soluzione</summary>
+Forse sarebbe meglio cambiare il campo `GeneName` cambiando la lunghezza dei caratteri.
+</details>
+
+Come possiamo ovviare al problema?
+<details>
+<summary>Soluzione</summary>
 	
 ```sql
 ALTER TABLE `phyloAccCNEE`
@@ -286,7 +303,30 @@ MODIFY COLUMN `GeneName` VARCHAR(50);
 ```
 </details>
 
+Ora Carichiamo i dati e finiamo di popolare il nostro DB.
+
+### Esplorazioni dei dati: uso di `SELECT`.
+
+Per prima cosa possiamo iniziare con il chiederci quanti geni sono stati usati in questo esperimento?
+Come possiamo estrarre questo dato?
+
 <details>
+<summary>Soluzione</summary>
+	
+```sql
+SELECT count(`OGid`) FROM `AnalisiOG`;
+```
+
+```
+count(`OGid`)
+2487
+```
+</details>
+
+Allo stesso modo, quanti geni sono sotto intensificazione?
+
+<details>
+<summary>Soluzione</summary>
 	
 ```sql
 SELECT `OGid` FROM `AnalisiOG` WHERE `Intensified` = 1;
@@ -294,15 +334,17 @@ SELECT `OGid` FROM `AnalisiOG` WHERE `Intensified` = 1;
 </details>
 
 <details>
-	
+<summary>Soluzione</summary>	
+
 ```sql
 SELECT Chr, COUNT(*) AS chr_count FROM CNEEtable GROUP BY Chr ORDER BY chr_count DESC;
 ```
 </details>
 
- <details>
-	 
-```sql
+<details>
+<summary>Soluzione</summary> 
+	
+ ```sql
 SELECT `OGid` FROM `AnalisiOG`
 WHERE `Intensified` = 1
 AND `CSUBST` = 1;
@@ -310,7 +352,8 @@ AND `CSUBST` = 1;
 </details>
 
 <details>
-	
+<summary>Soluzione</summary> 
+
 ```sql
 SELECT count(`OGid`) FROM `AnalisiOG`
 WHERE `Intensified` = 1
@@ -319,6 +362,7 @@ AND `CSUBST` = 1;
 </details>
 
 <details>
+<summary>Soluzione</summary> 
 	
 ```sql
 SELECT COUNT(BUSTEDPH) AS BUSTEDPH_count FROM `AnalisiOG`;
@@ -326,16 +370,18 @@ SELECT COUNT(BUSTEDPH) AS BUSTEDPH_count FROM `AnalisiOG`;
 </details>
 
 <details>
+<summary>Soluzione</summary> 
 	
 ```sql
 SELECT * FROM `CNEEtable`
 WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
-					WHERE `Intensified` = 1
-					AND `CSUBST` = 1);
+		WHERE `Intensified` = 1
+		AND `CSUBST` = 1);
 ```
 </details>
 
 <details>
+<summary>Soluzione</summary> 
 	
 ```sql
 SELECT
@@ -343,12 +389,13 @@ SELECT
 	SUBSTRING_INDEX(`CNEEid`, '.', 2) AS `gene`
 FROM `CNEEtable`
 WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
-					WHERE `Intensified` = 1
-					AND `CSUBST` = 1);
+		WHERE `Intensified` = 1
+		AND `CSUBST` = 1);
 ```
 </details>
 
 <details>
+<summary>Soluzione</summary> 
 	
 ```sql
 SELECT * FROM `phyloAccCNEE`
@@ -360,6 +407,7 @@ WHERE `CNEEid` IN (SELECT `CNEEid` FROM `CNEEtable`
 </details>
 
 <details>
+<summary>Soluzione</summary> 
 	
 ```sql
 SELECT * FROM `phyloAccCNEE`
