@@ -419,3 +419,53 @@ WHERE `CNEEid` IN (SELECT
 										AND `CSUBST` = 1));
 ```
 </details>
+
+#### `SELECT` per l'uso di *Joins* e *Unions*
+
+Il comando `SELECT` puo' anche essere usato per creare *join*: che aiutano a combinare i dati di più tabelle in base a una colonna correlata tra loro; e le *union*: che invece consentono di combinare i set di risultati di due o più istruzioni `SELECT`.
+Entrambi sono fondamentali per sfruttare tutta la potenza delle query SQL.
+
+![Group 7141 (1)](https://github.com/francicco/SQLtutorials/assets/9006870/261aaad4-63b9-4b58-9cc0-37da2a12f00e)
+
+Tipologie di join:
+- `INNER JOIN`: restituisce le righe quando c'è una corrispondenza in entrambe le tabelle.
+- `LEFT JOIN`: restituisce tutte le righe della tabella di sinistra e le righe corrispondenti della tabella di destra.
+- `RIGHT JOIN`: restituisce tutte le righe della tabella di destra e le righe corrispondenti della tabella di sinistra.
+- `FULL JOIN`: restituisce tutte le righe quando c'è una corrispondenza in una delle tabelle.
+
+Per illustrare i vari tipi JOIN in SQL, considera di voler estrarre tutti gli CNEE che appartengono alla mia lista di geni ortologhi.
+
+#### `INNER JOIN`:
+```sql
+SELECT AnalisiOG.*, CNEEtable.*
+FROM AnalisiOG 
+INNER JOIN CNEEtable 
+ON AnalisiOG.OGid = CNEEtable.OGid;
+```
+
+Possiamo inoltre *rinominare* le cartelle:
+
+```sql
+SELECT AnalisiOG.*, CNEEtable.*
+FROM AnalisiOG 
+INNER JOIN CNEEtable 
+ON A.OGid = C.OGid;
+```
+ ... Ed inserire una condizione con `WHERE`, e scegliere nel dettaglio quali campi selezionare
+	
+```sql
+SELECT A.OGid, A.CSUBST, C.CNEEid
+FROM AnalisiOG A
+INNER JOIN CNEEtable C
+ON A.OGid = C.OGid
+WHERE A.CSUBST = 1;
+```
+	
+#### `LEFT JOIN`:
+```sql
+SELECT A.*, C.*
+FROM AnalisiOG A
+LEFT JOIN CNEEtable C
+ON A.OGid = C.OGid
+WHERE A.CSUBST = 1;
+```
