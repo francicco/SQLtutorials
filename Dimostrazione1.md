@@ -202,7 +202,7 @@ Per svuotare la tebella...
 <summary>Soluzione</summary>
 	
 ```sql
-TRUNCATE TABLE AnalisiOG;
+TRUNCATE TABLE `AnalisiOG`;
 ```
 </details>
 
