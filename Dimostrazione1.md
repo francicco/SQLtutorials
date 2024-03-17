@@ -124,17 +124,24 @@ phyloacc.id	original.id	best.fit.model	marginal.likelihood.m0	marginal.likelihoo
 Iniziamo con il creare il nostro database (DB). Apriamo phpMyAdmin andando al link del nostro [localhost](http://localhost/phpmyadmin), verifichiamo che tutto funzioni, poi clicchiamo su `SQL` da qui eseguiremo i nostri comandi.
 As esempio il primo, la creazione del nostro DB.
 
+<details>
+	
 ```sql
 CREATE DATABASE `GenomicRegionDB`;
 ```
+</details>
+
 e clicchiamo su `GO`.
 Avremo a questo punto creato il nostro DB che andremo a popolare con le nostre tabelle.
 Per prima cosa pero' dobbiamo attivarlo:
 
+<details>
+	
 ```sql
 USE `GenomicRegionDB`;
 ```
-
+</details>
+	
 ### Creazione delle nostre tabelle.
 1. La prima tabella sara' quella dove ospiteremo la lista dei nostri gruppi di ortologhi e le analisi fatte su queste.
 - Qual e' il file?
@@ -146,6 +153,8 @@ Diamogli ancora un'occhiata, poi decidiamo...
 
 
 Creiamo la prima tabella `AnalisiOG` per il file `UpSetdata.tsv`
+<details>
+	
 ```sql
 CREATE TABLE `AnalisiOG` (
     `OGid` VARCHAR(25) PRIMARY KEY,
@@ -155,14 +164,22 @@ CREATE TABLE `AnalisiOG` (
     `CSUBST` TINYINT(1) NOT NULL CHECK (`CSUBST` IN (0, 1))
 );
 ```
-
+</details>
+	
 Possiamo eliminarla se pensiamo di aver fatto degli errori durante la creazione:
+
+<details>
+	
 ```
 DROP TABLE `AnalisiOG`;
 ```
+</details>
 
 Poi popoliamo la cartella con `LOAD DATA` se phpmyadmin ha i permessi di lettura al file,
-```
+
+<details>
+	
+```sql
 LOAD DATA INFILE 'Path/to/UpSetdata.csv'
 INTO TABLE `AnalisiOG`
 FIELDS TERMINATED BY ',' 
@@ -170,19 +187,32 @@ ENCLOSED BY ''
 LINES TERMINATED BY '\n'
 IGNORE 0 LINES;
 ```
+</details>
+
 Alternativamente possiamo usare la GUI di phpMyAdmin...
 
 Per svuotare la tebella...
+
+<details>
+	
 ```sql
 TRUNCATE TABLE AnalisiOG;
 ```
+</details>
 
 Il file va modificato leggermente per non avere problemi durante il caricamente dei dati...
+
+<details>
+	
 ```
 sed 's/\t/,/g' UpSetdata.tsv | grep -v gene > UpSetdata.csv
 ```
+</details>
 
 2. La seconda tabella ospitera' le coordinate delle regioni conservate.
+
+<details>
+	
 ```sql
 CREATE TABLE `CNEEtable` (
     `Chr` VARCHAR(25),
@@ -192,13 +222,17 @@ CREATE TABLE `CNEEtable` (
     `OGid` VARCHAR(25)
 );
 ```
+</details>
 
 e popoliamola!
 Ci sono problemi? Se si, come possiamo risolverli?
 
+<details>
+	
 ```
 sed 's/\t/,/g' AllOGs.CNEEs.tsv > AllOGs.CNEEs.csv
 ```
+</details>
 
 3. La tabella `elem_lik.txt` e' una tabella molto grande, alcuni campi non ci interessano e ci sono delle linee commentate, che andranno levate prima di importare il file. Per prima cosa dobbiamo decidere che campi scegliere.
 
@@ -207,11 +241,17 @@ I campi che ci interessano maggiormente saranno:
 Possiamo anche notare che in realta' `original.id` contiene una doppia informazione... il nome del gene in cui il CNEE si trova. Teniamolo ma diamogli un altro campo.
 Come possiamo tagliare il file e spezzare il campo `original.id`?
 
+<details>
+	
 ```
 grep -v '#' elem_lik.txt | grep -v phyloacc.id | cut -f2,3,7-17 | sed 's/\./\t/' | sed 's/\t/,/g' > elem_lik.csv
 ```
+</details>
 
 Ok, a questo punto creaiamo la tabella:
+
+<details>
+	
 ```sql
 CREATE TABLE `phyloAccCNEE` (
     `CNEEid` VARCHAR(25),
@@ -231,45 +271,72 @@ CREATE TABLE `phyloAccCNEE` (
     PRIMARY KEY (CNEEid, GeneName)
 );
 ```
+</details>
+
 E importiamo la tabella...
 
 
 Forse sarebbe meglio cambiare il campo `GeneName` cambiando la lunghezza dei caratteri.
+
+<details>
+	
 ```sql
 ALTER TABLE `phyloAccCNEE`
 MODIFY COLUMN `GeneName` VARCHAR(50);
 ```
+</details>
 
+<details>
+	
 ```sql
 SELECT `OGid` FROM `AnalisiOG` WHERE `Intensified` = 1;
 ```
+</details>
 
+<details>
+	
 ```sql
 SELECT Chr, COUNT(*) AS chr_count FROM CNEEtable GROUP BY Chr ORDER BY chr_count DESC;
 ```
+</details>
 
+ <details>
+	 
 ```sql
 SELECT `OGid` FROM `AnalisiOG`
 WHERE `Intensified` = 1
 AND `CSUBST` = 1;
 ```
+</details>
 
+<details>
+	
 ```sql
 SELECT count(`OGid`) FROM `AnalisiOG`
 WHERE `Intensified` = 1
 AND `CSUBST` = 1;
 ```
+</details>
 
+<details>
+	
 ```sql
 SELECT COUNT(BUSTEDPH) AS BUSTEDPH_count FROM `AnalisiOG`;
 ```
+</details>
 
+<details>
+	
 ```sql
 SELECT * FROM `CNEEtable`
 WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
 					WHERE `Intensified` = 1
 					AND `CSUBST` = 1);
 ```
+</details>
+
+<details>
+	
 ```sql
 SELECT
 	SUBSTRING_INDEX(`CNEEid`, '.', 1) AS `id`,
@@ -279,8 +346,10 @@ WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
 					WHERE `Intensified` = 1
 					AND `CSUBST` = 1);
 ```
+</details>
 
-
+<details>
+	
 ```sql
 SELECT * FROM `phyloAccCNEE`
 WHERE `CNEEid` IN (SELECT `CNEEid` FROM `CNEEtable`
@@ -288,7 +357,10 @@ WHERE `CNEEid` IN (SELECT `CNEEid` FROM `CNEEtable`
                                         WHERE `Intensified` = 1
                                         AND `CSUBST` = 1));
 ```
+</details>
 
+<details>
+	
 ```sql
 SELECT * FROM `phyloAccCNEE`
 WHERE `CNEEid` IN (SELECT
@@ -298,3 +370,4 @@ WHERE `CNEEid` IN (SELECT
 										WHERE `Intensified` = 1
 										AND `CSUBST` = 1));
 ```
+</details>
