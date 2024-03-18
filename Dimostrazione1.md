@@ -292,8 +292,7 @@ count(`OGid`)
 ```
 </details>
 
-Allo stesso modo, quanti geni sono sotto intensificazione?
-
+Allo stesso modo, quali geni sono sotto intensificazione?
 <details>
 <summary>Soluzione</summary>
 	
@@ -302,18 +301,11 @@ SELECT `OGid` FROM `AnalisiOG` WHERE `Intensified` = 1;
 ```
 </details>
 
-<details>
-<summary>Soluzione</summary>	
-
-```sql
-SELECT Chr, COUNT(*) AS chr_count FROM CNEEtable GROUP BY Chr ORDER BY chr_count DESC;
-```
-</details>
-
+Quali e Quanti sotto intensificazione e convergenza?
 <details>
 <summary>Soluzione</summary> 
-	
- ```sql
+
+```sql
 SELECT `OGid` FROM `AnalisiOG`
 WHERE `Intensified` = 1
 AND `CSUBST` = 1;
@@ -328,7 +320,17 @@ SELECT count(`OGid`) FROM `AnalisiOG`
 WHERE `Intensified` = 1
 AND `CSUBST` = 1;
 ```
+</details> 
+
+Quanti CNEE ci sono per cromosoma?
+<details>
+<summary>Soluzione</summary>	
+
+```sql
+SELECT Chr, COUNT(*) AS chr_count FROM CNEEtable GROUP BY Chr ORDER BY chr_count DESC;
+```
 </details>
+
 
 <details>
 <summary>Soluzione</summary> 
@@ -337,18 +339,6 @@ AND `CSUBST` = 1;
 SELECT COUNT(BUSTEDPH) AS BUSTEDPH_count FROM `AnalisiOG`;
 ```
 </details>
-
-<details>
-<summary>Soluzione</summary> 
-	
-```sql
-SELECT * FROM `CNEEtable`
-WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
-		WHERE `Intensified` = 1
-		AND `CSUBST` = 1);
-```
-</details>
-
 
 
 ### - `SELECT` per l'uso di *Joins* e *Unions*
@@ -501,4 +491,12 @@ WHERE `CNEEid` IN (SELECT SUBSTRING_INDEX(`CNEEid`, '.', 1) AS `id`
 							WHERE `Relaxed` = 1
 							AND `CSUBST` = 1))
 GROUP BY p.`Model`;
+```
+
+	
+```sql
+SELECT * FROM `CNEEtable`
+WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
+		WHERE `Intensified` = 1
+		AND `CSUBST` = 1);
 ```
