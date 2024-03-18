@@ -7,6 +7,7 @@ Questo dataset proviene da un dataset a cui sto lavorando. Sto cercando di trova
 Ho gia' eseguito differenti analisi tra cui analisi filogenetiche, cercando di ricostruire le relazioni filogenetiche tra le varie species appartenenti alla tribu' degli Heliconiini
 
 ![41467_2023_41412_Fig1_HTML](https://github.com/francicco/SQLtutorials/assets/9006870/7b1db0ce-0080-47d9-bdd8-0391bc2485ae)
+[Cicconardi et al 2024](https://www.nature.com/articles/s41467-023-41412-5)
 
 ## Che dati abbiamo.
 1. Genomi su cui sono stati annotati i geni codificanti per proteine.
