@@ -19,9 +19,9 @@ Ho gia' eseguito differenti analisi tra cui analisi filogenetiche, cercando di r
 
 ## Come organizzare i dati.
 Per prima cosa scarichiamo i dati e vediamo come sono organizzati.
-Creaiamo una cartella, entriamo e scarichiamo i file
+Creaiamo una cartella, entriamo e scarichiamo i file.
 
-click [qui](https://uob-my.sharepoint.com/:u:/g/personal/tk19812_bristol_ac_uk/EXRDAlk3iLhCvRKvIYVoe_wBCIR4qpZrPY-jTPDrBMXd2Q?e=xXDbTs) e scegli di scaricarlo nella cartella appena creata.
+Clicca [qui](https://uob-my.sharepoint.com/:u:/g/personal/tk19812_bristol_ac_uk/EXRDAlk3iLhCvRKvIYVoe_wBCIR4qpZrPY-jTPDrBMXd2Q?e=xXDbTs) e scegli di scaricarlo nella cartella appena creata.
 Decomprimiamo il file e guardiamo cosa contiene
 ```
 tar xvf Esercitazione01.data.tar.gz
