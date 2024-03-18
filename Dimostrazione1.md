@@ -123,26 +123,18 @@ phyloacc.id	original.id	best.fit.model	marginal.likelihood.m0	marginal.likelihoo
 ## Creazione del Database (un passo alla volta) e Preparazione dei dati.
 Iniziamo con il creare il nostro database (DB). Apriamo phpMyAdmin andando al link del nostro [localhost](http://localhost/phpmyadmin), verifichiamo che tutto funzioni, poi clicchiamo su `SQL` da qui eseguiremo i nostri comandi.
 As esempio il primo, la creazione del nostro DB.
-
-<details>
-<summary>Soluzione</summary>
 	
 ```sql
 CREATE DATABASE `GenomicRegionDB`;
 ```
-</details>
 
 e clicchiamo su `GO`.
 Avremo a questo punto creato il nostro DB che andremo a popolare con le nostre tabelle.
 Per prima cosa pero' dobbiamo attivarlo:
-
-<details>
-<summary>Soluzione</summary>
 	
 ```sql
 USE `GenomicRegionDB`;
 ```
-</details>
 	
 ### Creazione delle nostre tabelle.
 1. La prima tabella sara' quella dove ospiteremo la lista dei nostri gruppi di ortologhi e le analisi fatte su queste.
@@ -152,11 +144,6 @@ USE `GenomicRegionDB`;
 - e che tipologia di dati?
 
 Diamogli ancora un'occhiata, poi decidiamo...
-
-
-Creiamo la prima tabella `AnalisiOG` per il file `UpSetdata.tsv`
-<details>
-<summary>Soluzione</summary>
 	
 ```sql
 CREATE TABLE `AnalisiOG` (
@@ -167,22 +154,14 @@ CREATE TABLE `AnalisiOG` (
     `CSUBST` TINYINT(1) NOT NULL CHECK (`CSUBST` IN (0, 1))
 );
 ```
-</details>
 	
 Possiamo eliminarla se pensiamo di aver fatto degli errori durante la creazione:
-
-<details>
-<summary>Soluzione</summary>
 	
 ```sql
 DROP TABLE `AnalisiOG`;
 ```
-</details>
 
 Poi popoliamo la cartella con `LOAD DATA` se phpmyadmin ha i permessi di lettura al file,
-
-<details>
-<summary>Soluzione</summary>
 	
 ```sql
 LOAD DATA INFILE 'Path/to/UpSetdata.csv'
@@ -192,21 +171,17 @@ ENCLOSED BY ''
 LINES TERMINATED BY '\n'
 IGNORE 0 LINES;
 ```
-</details>
 
 Alternativamente possiamo usare la GUI di phpMyAdmin...
 
 Per svuotare la tebella...
-
-<details>
-<summary>Soluzione</summary>
 	
 ```sql
 TRUNCATE TABLE `AnalisiOG`;
 ```
-</details>
 
 Il file va modificato leggermente per non avere problemi durante il caricamente dei dati...
+Convertiamo il file `UpSetdata.tsv` in un `CSV`. Possiamo usare un comando di `BASH`? Come?
 
 <details>
 <summary>Soluzione</summary>
@@ -217,9 +192,6 @@ sed 's/\t/,/g' UpSetdata.tsv | grep -v gene > UpSetdata.csv
 </details>
 
 2. La seconda tabella ospitera' le coordinate delle regioni conservate.
-
-<details>
-<summary>Soluzione</summary>
 	
 ```sql
 CREATE TABLE `CNEEtable` (
@@ -230,7 +202,6 @@ CREATE TABLE `CNEEtable` (
     `OGid` VARCHAR(25)
 );
 ```
-</details>
 
 e popoliamola!
 Ci sono problemi? Se si, come possiamo risolverli?
@@ -248,6 +219,7 @@ sed 's/\t/,/g' AllOGs.CNEEs.tsv > AllOGs.CNEEs.csv
 I campi che ci interessano maggiormente saranno:
 
 `original.id	best.fit.model	logbf1	logbf2	logbf3	conserved.rate.m0	accel.rate.m0	conserved.rate.m1	accel.rate.m1	conserved.rate.m2	accel.rate.m2	num.accel.m1	num.accel.m2`
+
 Possiamo anche notare che in realta' `original.id` contiene una doppia informazione... il nome del gene in cui il CNEE si trova. Teniamolo ma diamogli un altro campo.
 Come possiamo tagliare il file e spezzare il campo `original.id`?
 
@@ -261,9 +233,6 @@ grep -v '#' elem_lik.txt | grep -v phyloacc.id | cut -f2,3,7-17 | sed 's/\./\t/'
 
 Ok, a questo punto creaiamo la tabella:
 
-<details>
-<summary>Soluzione</summary>
-	
 ```sql
 CREATE TABLE `phyloAccCNEE` (
     `CNEEid` VARCHAR(25),
@@ -283,11 +252,11 @@ CREATE TABLE `phyloAccCNEE` (
     PRIMARY KEY (CNEEid, GeneName)
 );
 ```
-</details>
 
-E importiamo la tabella...
+E popoliamola...
 
 C'e' qualcosa che non va? Se si, cosa?
+
 <details>
 <summary>Soluzione</summary>
 Forse sarebbe meglio cambiare il campo `GeneName` cambiando la lunghezza dei caratteri.
