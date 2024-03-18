@@ -141,7 +141,7 @@ USE `GenomicRegionDB`;
 - Qual e' il file?
 - Come vogliamo chiamare la tabella?
 - Quanti campi contiene?
-- e che tipologia di dati?
+- Che tipologia di dati?
 
 Diamogli ancora un'occhiata, poi decidiamo...
 	
