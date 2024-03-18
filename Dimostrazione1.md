@@ -46,9 +46,9 @@ head UpSetdata.tsv
 |OG_13053|1|0|1|0|
 |OG_12245|1|0|0|0|
 
-*ii)* La lista delle regioni conservate (RC) analizzate, le loro coordinate su un genoma di riferimento, in questo caso *Heliconius melpomene*, e la associazione di queste con i gruppi ortologhi.
+*ii)* La lista delle regioni conservate non-esoniche (CNEE) analizzate, le loro coordinate su un genoma di riferimento, in questo caso *Heliconius melpomene*, e la associazione di queste con i gruppi ortologhi.
 ```bash
-head UpSetdata.tsv
+head AllOGs.CNEEs.tsv
 ```
 
 |--|--|--|--|--|
