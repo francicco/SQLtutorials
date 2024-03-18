@@ -16,6 +16,7 @@ Ho gia' eseguito differenti analisi tra cui analisi filogenetiche, cercando di r
 5. Una serie di analisi sui geni codificanti, tra cui: convergenza evolutiva (`CSUBST`), rilassamento (`Relaxed`) o intensificzione (`Intensified`) della pressione evolutiva, e differenza di selezione tra specie gregarie e non gregarie (`BUSTEDPH`).
 
 ![41467_2023_41412_Fig6_HTML](https://github.com/francicco/SQLtutorials/assets/9006870/6040c545-8e84-481a-89b2-4af7b1505010)
+[Cicconardi et al 2024](https://www.nature.com/articles/s41467-023-41412-5)
 
 ## Come organizzare i dati.
 Per prima cosa scarichiamo i dati e vediamo come sono organizzati.
