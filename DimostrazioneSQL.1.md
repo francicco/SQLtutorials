@@ -276,3 +276,5 @@ MODIFY COLUMN `GeneName` VARCHAR(50);
 
 Ora Carichiamo i dati e finiamo di popolare il nostro DB.
 
+Ora vai alla [parte 2](https://github.com/francicco/SQLtutorials/blob/main/DimostrazioneSQL.2.md)
+
