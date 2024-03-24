@@ -104,7 +104,7 @@ SELECT `Chr`, (End - Start + 1) AS lunghezza
 Sommare i singoli valori raggruppando per cromosoma
 
 <details>
-<summary>	Query problema 2:</summary> 
+<summary>Query problema 2:</summary> 
 
 ```sql
 SELECT `Chr`, SUM(lunghezza)
@@ -112,7 +112,7 @@ FROM ()
 GROUP BY `Chr`;
 ```
 
-Ovviamente non abbiamo una tabella gia' fatta per questa query, ma possiamo usare la query precedente come "tabella" di input.
+### Ovviamente non abbiamo una tabella gia' fatta per questa query, ma possiamo usare la query precedente come "tabella" di input.
 Per fare questa ci serve trasformare la `SELECT` in un oggetto con la clausola `AS`.
 
 ```sql
@@ -123,6 +123,66 @@ GROUP BY `Chr`;
 ```
 </details>
 </details>
+
+### Possiamo effettuare tutte le operazioni base, ad esempio, oltre alla somma, la media.
+Ad esempio la media delle `NumAccelM1` nella tabella `phyloAccCNEE`
+
+```sql
+SELECT AVG(`NumAccelM1`) AS average_NumAccelvalue
+FROM `phyloAccCNEE`
+WHERE `Model` = 'M1';
+```
+
+O la mediana... 
+
+La formula della [mediana](https://en.wikipedia.org/wiki/Median)
+![image](https://github.com/francicco/SQLtutorials/assets/9006870/17f05f4d-b93a-4ce5-b4c7-5c350c98bd39)
+
+<details>
+<summary>	Query problema 2:</summary> 
+
+```sql
+SELECT AVG(median_value) AS median 
+FROM (
+    SELECT `NumAccelM1`, row_num, total_rows,
+           CASE
+               WHEN total_rows % 2 = 1 THEN `NumAccelM1`
+               WHEN row_num IN ((total_rows + 1) / 2, (total_rows + 2) / 2) THEN `NumAccelM1`
+               ELSE NULL
+           END AS median_value
+    FROM (
+        SELECT `NumAccelM1`,
+               ROW_NUMBER() OVER (ORDER BY `NumAccelM1`) AS row_num,
+               COUNT(*) OVER () AS total_rows
+        FROM `phyloAccCNEE`
+        WHERE `Model` = 'M1'
+    ) AS subquery
+) AS med;
+```
+
+
+
+E la mediana
+
+SELECT 
+  'field_name' AS field_name,
+  AVG(median_value) AS median_value
+FROM (
+  SELECT 
+    field_name AS median_value
+  FROM 
+    (SELECT 
+      field_name, 
+      ROW_NUMBER() OVER (ORDER BY field_name) AS row_num,
+      COUNT(*) OVER () AS total_rows
+    FROM 
+      your_table_name
+    ORDER BY 
+      field_name) AS sorted
+  WHERE 
+    row_num IN ((total_rows + 1) / 2, (total_rows + 2) / 2)
+) AS med;
+
 
 
 ### - `SELECT` per l'uso di *Joins* e *Unions*
@@ -323,7 +383,9 @@ WHERE `CNEEid` IN (SELECT SUBSTRING_INDEX(`CNEEid`, '.', 1) AS `id`
 </details>
 
 E ad esempio contare la frequenza per i modelli `M0`, `M1` e `M2` per i miei risultati sui geni. 
-
+<details>
+<summary>Soluzione</summary> 
+	
 ```sql
 SELECT p.Model, count(*) FROM `phyloAccCNEE` p
 WHERE `CNEEid` IN (SELECT SUBSTRING_INDEX(`CNEEid`, '.', 1) AS `id`
@@ -333,4 +395,93 @@ WHERE `CNEEid` IN (SELECT SUBSTRING_INDEX(`CNEEid`, '.', 1) AS `id`
 							AND `CSUBST` = 1))
 GROUP BY p.`Model`;
 ```
+</details>
 
+### - L'uso `SELECT` per creare nuove tabelle organizzare diversamente i dati.
+Mettiamo il caso che io voglia estrarre ed organizzare i dati che ho strutturato in certo modo in un altro che io reputo piu' snello, magari per una normalizzazione.
+Posso utilizzare il comando `SELECT` per creare una nuova tabella.
+
+La tabella `phyloAccCNEE` ad esempio contiene dati ridondanti poco utili in questo momento. Nella tabella sono elencati tutti i valori per i rate di accelerazione e conservazione per i tre modelli ma solo uno di questi set di valori sono corrispondenti al *best fit*.
+Quello che possiamo decidere di fare e' creare una nuova tabella in cui sono elencati solo i valori per il *best fit model*.
+
+Per prima cosa pensiamo a creare la nostra `SELECT` selezionando i campi appropriati per il `best model` `M1`:
+
+<details>
+<summary>Soluzione</summary> 
+
+```sql
+SELECT `CNEEid`,`GeneName`,`Model`,`logbf1`,`logbf2`,`logbf3`,`conservedRateM1` AS `conservedRate`,`accelRateM1` AS `accelRate`,`NumAccelM1` AS `NumAccel`
+FROM `phyloAccCNEE`
+WHERE `Model` = 'M1';
+```
+</details>
+
+Ora usiamo la queri per creare e inserire i dati all'interno di una nuova tabella `phyloAccCNEE_New`
+
+<details>
+<summary>Soluzione</summary> 
+
+```sql
+CREATE TABLE `phyloAccCNEE_New` AS
+SELECT `CNEEid`,`GeneName`,`Model`,`logbf1`,`logbf2`,`logbf3`,`conservedRateM1` AS `conservedRate`,`accelRateM1` AS `accelRate`,`NumAccelM1` AS `NumAccel`
+FROM `phyloAccCNEE`
+WHERE `Model` = 'M1';
+```
+</details>
+
+Ecco una nuova tabella con i dati relativi ai CNEE con best model `M1`
+
+Facciamo lo stesso per `M2`, ma invece di creare una nuova tabella inseriamo i nuovi dati delle tabella appena creata:
+
+<details>
+<summary>Soluzione</summary> 
+
+```sql
+INSERT INTO `phyloAccCNEE_New`
+SELECT `CNEEid`,`GeneName`,`Model`,`logbf1`,`logbf2`,`logbf3`,`conservedRateM2` AS `conservedRate`,`accelRateM2` AS `accelRate`,`NumAccelM2` AS `NumAccel`
+FROM `phyloAccCNEE`
+WHERE `Model` = 'M2';
+```
+</details>
+
+E ora per `M0`, ma facendo attenzione al campo `NumAccelM*`, esiste relativo a `M0`? Con cosa possiamo sostiturilo?
+
+<details>
+<summary>Soluzione</summary> 
+
+```sql
+INSERT INTO `phyloAccCNEE_New`
+SELECT `CNEEid`,`GeneName`,`Model`,`logbf1`,`logbf2`,`logbf3`,`conservedRateM2` AS `conservedRate`,`accelRateM2` AS `accelRate`, 0 AS `NumAccel`
+FROM `phyloAccCNEE`
+WHERE `Model` = 'M0';
+```
+</details>
+
+
+
+
+Voglio creare una nuova tabella da valori ridondanti di un'altra e sostituire questi valori con nuovi id creati al momento della creazione della nuova tabella
+
+CREATE TABLE new_table (
+    new_id INT AUTO_INCREMENT PRIMARY KEY,
+    distinct_value VARCHAR(255) -- Adjust the data type as per your needs
+);
+
+INSERT INTO new_table (distinct_value)
+SELECT DISTINCT redundant_value_column
+FROM your_original_table;
+
+Update sulla tabella originale
+
+UPDATE your_original_table AS t
+INNER JOIN new_table AS nt ON t.redundant_value_column = nt.distinct_value
+SET t.new_id_column = nt.new_id;
+
+Questo per usare una nuovo campo
+
+ALTER TABLE your_original_table
+ADD COLUMN new_id_column INT; -- Adjust the data type as per your needs
+
+UPDATE your_original_table AS t
+INNER JOIN new_table AS nt ON t.redundant_value_column = nt.distinct_value
+SET t.new_id_column = nt.new_id;
