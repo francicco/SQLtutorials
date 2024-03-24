@@ -3,13 +3,12 @@
 Per prima cosa possiamo iniziare con il chiederci quanti geni sono stati usati in questo esperimento?
 Come possiamo estrarre questo dato?
 
-<details>
-<summary>Soluzione</summary>
-	
 ```sql
 SELECT count(`OGid`) FROM `AnalisiOG`;
 ```
 
+<details>
+<summary>Soluzione</summary>
 ```
 count(`OGid`)
 2487
@@ -21,7 +20,9 @@ Allo stesso modo, quali geni sono sotto intensificazione?
 <summary>Soluzione</summary>
 	
 ```sql
-SELECT `OGid` FROM `AnalisiOG` WHERE `Intensified` = 1;
+SELECT `OGid`
+FROM `AnalisiOG`
+WHERE `Intensified` = 1;
 ```
 </details>
 
@@ -45,6 +46,20 @@ WHERE `Intensified` = 1
 AND `CSUBST` = 1;
 ```
 </details> 
+
+Come possiamo raggruppare tutti i campi in una sola query?
+<details>
+<summary>Soluzione</summary> 
+
+```sql
+SELECT sum(`BUSTEDPH`) AS sum_BUSTED,
+	sum(`Relaxed`) AS sum_Relaxed, 
+	sum(`Intensified`) AS sum_Intensified,
+	sum(`CSUBST`) AS sum_CSUBST
+FROM `AnalisiOG`;
+````
+</details>
+
 
 Quanti CNEE ci sono per cromosoma?
 <details>
