@@ -86,26 +86,25 @@ Come vogliamo affrontare il problema? Posso pensare di spezzare il problema in p
 In questo caso, quali potrebbero essere i sotto problemi piu' semplici?
 
 <details>
-<summary>Sotto problema 1</summary> 
+<summary>Sotto problema 1:</summary> 
 Calcolare la lunghezza di ogni CNEE
-</details>
 
 <details>
-<summary>Query problema 1</summary> 
+<summary>Query problema 1:</summary> 
 
 ```sql
 SELECT `Chr`, (End - Start + 1) AS lunghezza 
     FROM CNEEtable
 ```
 </details>
-
-<details>
-<summary>Sotto problema 2</summary> 
-Sommare i singoli valori raggruppando per cromosoma
 </details>
 
+<details>	
+<summary>Sotto problema 2:</summary> 
+Sommare i singoli valori raggruppando per cromosoma
+
 <details>
-<summary>Query problema 1</summary> 
+<summary>	Query problema 2:</summary> 
 
 ```sql
 SELECT `Chr`, SUM(lunghezza)
@@ -123,6 +122,8 @@ FROM (SELECT `Chr`, (End - Start + 1) AS lunghezza
 GROUP BY `Chr`;
 ```
 </details>
+</details>
+
 
 ### - `SELECT` per l'uso di *Joins* e *Unions*
 
