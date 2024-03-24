@@ -135,11 +135,9 @@ WHERE `Model` = 'M1';
 
 O la mediana... 
 
-La formula della [mediana](https://en.wikipedia.org/wiki/Median)
-![image](https://github.com/francicco/SQLtutorials/assets/9006870/17f05f4d-b93a-4ce5-b4c7-5c350c98bd39)
+La [mediana](https://en.wikipedia.org/wiki/Median) (o valore mediano) che si trova nel mezzo di una distribuzione.
 
-<details>
-<summary>	Query problema 2:</summary> 
+![image](https://github.com/francicco/SQLtutorials/assets/9006870/0eaa9195-742e-45a5-9081-783e1c8f00f7)
 
 ```sql
 SELECT AVG(median_value) AS median 
@@ -160,30 +158,25 @@ FROM (
 ) AS med;
 ```
 
+Analizziamo la query passo dopo passo:
 
+1. **Sottoquery più interna (sottoquery)**:
+   - Questa sottoquery recupera i dati dalla tabella `phyloAccCNEE` in cui la colonna `Model` e' `M1`.
+   - Utilizza la funzione della finestra "ROW_NUMBER()" per assegnare un numero di riga sequenziale a ciascuna riga nel set di risultati in base all'ordine della colonna `NumAccelM1`.
+   - Utilizza anche la funzione della finestra `COUNT(*)` per calcolare il numero totale di righe nel set di risultati.
+   - Il set di risultati di questa sottoquery include tre colonne: `NumAccelM1`, `row_num` e `total_rows`.
 
-E la mediana
+2. **Sottoquery esterna (med)**:
+   - Questa sottoquery incapsula la sottoquery interna.
+   - Include una colonna aggiuntiva `median_value` che calcola il valore mediano in base a `row_num` e `total_rows`.
+   - L'istruzione `CASE` controlla se il numero totale di righe (`total_rows`) è dispari. Se è dispari, seleziona direttamente il valore `NumAccelM1` corrispondente alla riga centrale.
+   - Se il numero totale di righe è pari, seleziona i valori `NumAccelM1` corrispondenti alle due righe centrali e restituisce la loro media.
+   - Per le righe diverse da quelle mediane, assegna NULL a `median_value`.
 
-SELECT 
-  'field_name' AS field_name,
-  AVG(median_value) AS median_value
-FROM (
-  SELECT 
-    field_name AS median_value
-  FROM 
-    (SELECT 
-      field_name, 
-      ROW_NUMBER() OVER (ORDER BY field_name) AS row_num,
-      COUNT(*) OVER () AS total_rows
-    FROM 
-      your_table_name
-    ORDER BY 
-      field_name) AS sorted
-  WHERE 
-    row_num IN ((total_rows + 1) / 2, (total_rows + 2) / 2)
-) AS med;
+3. **Query più esterna**:
+   - La query più esterna calcola la media della colonna `median_value`, che di fatto calcola il valore mediano della colonna `NumAccelM1` per le righe in cui `Model` è `M1`.
 
-
+In sintesi, vengono utilizzate le funzioni della finestra per assegnare i numeri di riga e calcolare il numero totale di righe, quindi calcola il valore mediano in base a questi calcoli. Infine, calcola la media dei valori mediani per ottenere la mediana complessiva.
 
 ### - `SELECT` per l'uso di *Joins* e *Unions*
 
