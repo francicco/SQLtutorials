@@ -1,7 +1,7 @@
 # SQL: Esplorazioni dei dati: uso di `SELECT`.
 
-Per prima cosa possiamo iniziare con il chiederci quanti geni sono stati usati in questo esperimento?
-Come possiamo estrarre questo dato?
+### Per prima cosa possiamo iniziare con il chiederci quanti geni sono stati usati in questo esperimento?
+### Come possiamo estrarre questo dato?
 
 ```sql
 SELECT count(`OGid`) FROM `AnalisiOG`;
@@ -15,7 +15,7 @@ count(`OGid`)
 ```
 </details>
 
-Allo stesso modo, quali geni sono sotto intensificazione?
+### Allo stesso modo, quali geni sono sotto intensificazione?
 <details>
 <summary>Soluzione</summary>
 	
@@ -26,7 +26,7 @@ WHERE `Intensified` = 1;
 ```
 </details>
 
-Quali e Quanti sotto intensificazione e convergenza?
+### Quali e Quanti sotto intensificazione e convergenza?
 <details>
 <summary>Soluzione</summary> 
 
@@ -47,7 +47,7 @@ AND `CSUBST` = 1;
 ```
 </details> 
 
-Come possiamo raggruppare tutti i campi in una sola query?
+### Come possiamo raggruppare tutti i campi in una sola query?
 <details>
 <summary>Soluzione</summary> 
 
@@ -61,7 +61,7 @@ FROM `AnalisiOG`;
 </details>
 
 
-Quanti CNEE ci sono per cromosoma?
+### Quanti CNEE ci sono per cromosoma?
 <details>
 <summary>Soluzione</summary>	
 
@@ -79,6 +79,50 @@ SELECT COUNT(BUSTEDPH) AS BUSTEDPH_count FROM `AnalisiOG`;
 ```
 </details>
 
+### Vediamo un altra query piu' complessa. Ad esempio vorrei voler sapere quale sia la lunghezza totale dei CNEE per cromosoma.
+In altre parole la somma della lunghezza di ogni CNEE per ogni cromosoma.
+
+Come vogliamo affrontare il problema? Posso pensare di spezzare il problema in problemi piu' semplici, il calassico approccio del [Divide & Conquer](https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm#:~:text=The%20divide%2Dand%2Dconquer%20paradigm,to%20solve%20the%20given%20problem.)
+In questo caso, quali potrebbero essere i sotto problemi piu' semplici?
+
+<details>
+<summary>Sotto problema 1</summary> 
+Calcolare la lunghezza di ogni CNEE
+</details>
+
+<details>
+<summary>Query problema 1</summary> 
+
+```sql
+SELECT `Chr`, (End - Start + 1) AS lunghezza 
+    FROM CNEEtable
+```
+</details>
+
+<details>
+<summary>Sotto problema 2</summary> 
+Sommare i singoli valori raggruppando per cromosoma
+</details>
+
+<details>
+<summary>Query problema 1</summary> 
+
+```sql
+SELECT `Chr`, SUM(lunghezza)
+FROM ()
+GROUP BY `Chr`;
+```
+
+Ovviamente non abbiamo una tabella gia' fatta per questa query, ma possiamo usare la query precedente come "tabella" di input.
+Per fare questa ci serve trasformare la `SELECT` in un oggetto con la clausola `AS`.
+
+```sql
+SELECT `Chr`, SUM(lunghezza)
+FROM (SELECT `Chr`, (End - Start + 1) AS lunghezza 
+    FROM CNEEtable) AS subquery
+GROUP BY `Chr`;
+```
+</details>
 
 ### - `SELECT` per l'uso di *Joins* e *Unions*
 
