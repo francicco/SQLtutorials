@@ -148,12 +148,12 @@ INNER JOIN CNEEtable
 ON AnalisiOG.OGid = CNEEtable.OGid;
 ```
 
-Possiamo inoltre *rinominare* le cartelle:
+Possiamo inoltre *rinominare* le tabelle:
 
 ```sql
-SELECT AnalisiOG.*, CNEEtable.*
-FROM AnalisiOG 
-INNER JOIN CNEEtable 
+SELECT A.*, C.*
+FROM AnalisiOG AS A
+INNER JOIN CNEEtable AS C
 ON A.OGid = C.OGid;
 ```
  ... Ed inserire una condizione con `WHERE`, e scegliere nel dettaglio quali campi selezionare
@@ -178,6 +178,28 @@ ORDER BY A.OGid;
 ```
 
 E' abbastanza intuitivo vedere come il `LEFT JOIN` mostra anche i gruppi orthologhi che non hanno un corrispettivo nella tabella `CNEEtable`, cio' vuol dire che quel gene non presenta alcuna regione conservata nelle sue vicinanze.
+
+Possimo usare questa informazione per cercare ad esempio quali sono gli OG che non hanno nessun CNEE nelle sue regioni regolatorie.
+Uso la query precente per mostrare i campi `NULL`...
+
+```sql
+SELECT A.OGid, A.Relaxed, C.CNEEid
+FROM AnalisiOG A
+LEFT JOIN CNEEtable C ON A.OGid = C.OGid
+WHERE A.Relaxed = 1
+AND C.CNEEid IS NULL;
+```
+
+e contare gli OG con i campi `NULL`:
+```sql
+SELECT SUM(RelaxedNull) AS RelaxedNull
+FROM (SELECT A.OGid, A.Relaxed AS RelaxedNull, C.CNEEid
+FROM AnalisiOG A
+LEFT JOIN CNEEtable C ON A.OGid = C.OGid
+WHERE A.Relaxed = 1
+AND C.CNEEid IS NULL) AS subquery;
+```
+
 
 #### `RIGHT JOIN`:
 Se invece eseguiamo il `RIGHT JOIN`...
