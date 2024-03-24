@@ -248,23 +248,57 @@ RIGHT JOIN CNEEtable C ON A.OGid = C.OGid;
 ```
 
 ### - `IN` per l'uso `SELECT` all'interno di altre `SELECT`
+la clausola `IN` viene utilizzata per specificare un elenco di valori per il confronto in una clausola WHERE. Consente di filtrare il set di risultati in base al fatto che un valore corrisponda a qualsiasi valore in un elenco specificato.
+
+La clausola IN non è alternativa alla clausola `JOIN`; piuttosto, servono a scopi diversi.
+
+- `JOIN` viene utilizzata per combinare righe di due o più tabelle in base a una colonna correlata tra di loro. Ti consente di recuperare dati correlati da più tabelle.
+- la clausola `IN`, invece viene utilizzata per filtrare il set di risultati in base al fatto che un valore corrisponda a qualsiasi valore in un elenco specificato. Viene in genere utilizzato nella clausola `WHERE` per filtrare le righe in base a un elenco di valori specifici.
+
+Sebbene sia JOIN che IN possano essere utilizzati per filtrare i dati, funzionano in modo diverso e vengono utilizzati per scopi diversi:
+
+`JOIN` viene utilizzato per recuperare dati da tabelle correlate combinando righe.
+`IN` viene utilizzato per filtrare le righe in base a un elenco specifico di valori.
+In alcuni casi, potresti utilizzare sia JOIN che IN insieme per eseguire query più complesse, ad esempio unendo tabelle e quindi filtrando il risultato utilizzando la clausola IN. Ma non sono intercambiabili e il loro utilizzo dipende dai requisiti specifici della tua query.
+
+Vediamo un esempio:
+
+Mettima il caso io voglia estrarre tutti i CNEE che sono presenti nel set di geni che sono sotto intensificazione (`Intensified = 1`) e abbiamo evidenza di convergenza (`CSUBST = 1`). Con il `JOIN` ptrei eseguire un comando di questo tipo:
+
+```sql
+SELECT C.*
+FROM CNEEtable C
+JOIN AnalisiOG A ON C.OGid = A.OGid
+WHERE A.Intensified = 1
+AND A.CSUBST = 1;
+```
+
+Con la clausola `IN` invece, per prima cosa estraggo tutti gli OG che presentano le due condizioni, semplice `SELECT`
 
 <details>
 <summary>Soluzione</summary> 
-	
+
 ```sql
-SELECT
-	SUBSTRING_INDEX(`CNEEid`, '.', 1) AS `id`,
-	SUBSTRING_INDEX(`CNEEid`, '.', 2) AS `gene`
-FROM `CNEEtable`
+SELECT `OGid`
+FROM `AnalisiOG`
+WHERE `Intensified` = 1
+AND `CSUBST` = 1;
+```
+</details>
+
+Ora, senza usare `JOIN` ma usando `WHERE` e `IN`. Creo una condizione per cui verifico se gli `OGid` della tabella `CNEEtable` sono nella `SELECT` (`IN`) che ho creato:
+
+```sql
+SELECT C.*
+FROM `CNEEtable` C
 WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
 		WHERE `Intensified` = 1
 		AND `CSUBST` = 1);
 ```
-</details>
 
+Allo stesso modo, posso creare una lista di questi `OGid` ed estrarre i risutati della tabella `phyloAccCNEE`? 
 <details>
-<summary>Soluzione</summary> 
+<summary>Soluzione A</summary> 
 	
 ```sql
 SELECT * FROM `phyloAccCNEE`
@@ -276,33 +310,27 @@ WHERE `CNEEid` IN (SELECT `CNEEid` FROM `CNEEtable`
 </details>
 
 <details>
-<summary>Soluzione</summary> 
+<summary>Soluzione B</summary> 
 	
 ```sql
 SELECT * FROM `phyloAccCNEE`
-WHERE `CNEEid` IN (SELECT
-			SUBSTRING_INDEX(`CNEEid`, '.', 1) AS `id`
+WHERE `CNEEid` IN (SELECT SUBSTRING_INDEX(`CNEEid`, '.', 1) AS `id`
 			FROM `CNEEtable`
 			WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
-						WHERE `Intensified` = 1
+						WHERE `Intensified` = 1));
 						AND `CSUBST` = 1));
 ```
 </details>
+
+E ad esempio contare la frequenza per i modelli `M0`, `M1` e `M2` per i miei risultati sui geni. 
 
 ```sql
 SELECT p.Model, count(*) FROM `phyloAccCNEE` p
 WHERE `CNEEid` IN (SELECT SUBSTRING_INDEX(`CNEEid`, '.', 1) AS `id`
 					FROM `CNEEtable`
 					WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
-							WHERE `Relaxed` = 1
+							WHERE `Intensified` = 1
 							AND `CSUBST` = 1))
 GROUP BY p.`Model`;
 ```
 
-	
-```sql
-SELECT * FROM `CNEEtable`
-WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
-		WHERE `Intensified` = 1
-		AND `CSUBST` = 1);
-```
