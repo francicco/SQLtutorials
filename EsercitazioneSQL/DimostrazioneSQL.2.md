@@ -370,7 +370,7 @@ SELECT * FROM `phyloAccCNEE`
 WHERE `CNEEid` IN (SELECT SUBSTRING_INDEX(`CNEEid`, '.', 1) AS `id`
 			FROM `CNEEtable`
 			WHERE `OGid` IN (SELECT `OGid` FROM `AnalisiOG`
-						WHERE `Intensified` = 1));
+						WHERE `Intensified` = 1
 						AND `CSUBST` = 1));
 ```
 </details>
