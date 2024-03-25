@@ -449,32 +449,3 @@ FROM `phyloAccCNEE`
 WHERE `Model` = 'M0';
 ```
 </details>
-
-
-
-
-Voglio creare una nuova tabella da valori ridondanti di un'altra e sostituire questi valori con nuovi id creati al momento della creazione della nuova tabella
-
-CREATE TABLE new_table (
-    new_id INT AUTO_INCREMENT PRIMARY KEY,
-    distinct_value VARCHAR(255) -- Adjust the data type as per your needs
-);
-
-INSERT INTO new_table (distinct_value)
-SELECT DISTINCT redundant_value_column
-FROM your_original_table;
-
-Update sulla tabella originale
-
-UPDATE your_original_table AS t
-INNER JOIN new_table AS nt ON t.redundant_value_column = nt.distinct_value
-SET t.new_id_column = nt.new_id;
-
-Questo per usare una nuovo campo
-
-ALTER TABLE your_original_table
-ADD COLUMN new_id_column INT; -- Adjust the data type as per your needs
-
-UPDATE your_original_table AS t
-INNER JOIN new_table AS nt ON t.redundant_value_column = nt.distinct_value
-SET t.new_id_column = nt.new_id;
