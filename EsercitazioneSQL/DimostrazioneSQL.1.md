@@ -23,7 +23,7 @@ Ho gia' eseguito differenti analisi tra cui analisi filogenetiche, cercando di r
 Per prima cosa scarichiamo i dati e vediamo come sono organizzati.
 Creaiamo una cartella, entriamo e scarichiamo i file.
 
-Clicca [qui]([https://uob-my.sharepoint.com/:u:/g/personal/tk19812_bristol_ac_uk/EXRDAlk3iLhCvRKvIYVoe_wBCIR4qpZrPY-jTPDrBMXd2Q?e=xXDbTs](https://drive.google.com/file/d/1SZdS5arUWnRTxnR6biGmm73irsrS_ga3/view?usp=sharing)) e scegli di scaricarlo nella cartella appena creata.
+Clicca [qui](https://drive.google.com/file/d/1SZdS5arUWnRTxnR6biGmm73irsrS_ga3/view?usp=sharing) e scegli di scaricarlo nella cartella appena creata.
 Decomprimiamo il file e guardiamo cosa contiene
 ```
 tar xvf Esercitazione01.data.tar.gz
