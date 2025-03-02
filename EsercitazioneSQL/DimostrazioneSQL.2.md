@@ -122,7 +122,8 @@ Per fare questa ci serve trasformare la `SELECT` in un oggetto con la clausola `
 SELECT `Chr`, SUM(lunghezza)
 FROM (
 	SELECT `Chr`, (End - Start + 1) AS lunghezza
- 	FROM CNEEtable) AS subquery
+ 	FROM CNEEtable
+	) AS subquery
 GROUP BY `Chr`;
 ```
 </details>
