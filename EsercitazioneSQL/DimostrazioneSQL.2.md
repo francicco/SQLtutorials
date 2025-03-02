@@ -94,6 +94,18 @@ AND CSUBST = 1;
 ```
 </details>
 
+Oppure negare una condizione, ad esempio *non devono* essere positivi a convergenza (`CSUBST`)
+
+<details>
+<summary>Soluzione</summary> 
+	
+```sql
+SELECT COUNT(BUSTEDPH) AS BUSTEDPH_count
+FROM `AnalisiOG`
+WHERE NOT CSUBST = 1;
+```
+</details>
+
 
 ### Quanti CNEE ci sono per cromosoma?
 <details>
