@@ -166,7 +166,7 @@ DROP TABLE `AnalisiOG`;
 Poi popoliamo la cartella con `LOAD DATA` se phpmyadmin ha i permessi di lettura al file,
 	
 ```sql
-LOAD DATA INFILE 'Path/to/UpSetdata.csv'
+LOAD DATA INFILE 'Path/to/UpSetdata.tsv'
 INTO TABLE `AnalisiOG`
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY ''
