@@ -60,19 +60,6 @@ FROM `AnalisiOG`;
 ````
 </details>
 
-
-### Quanti CNEE ci sono per cromosoma?
-<details>
-<summary>Soluzione</summary>	
-
-```sql
-SELECT Chr, COUNT(*) AS chr_count
-FROM CNEEtable
-GROUP BY Chr
-ORDER BY chr_count DESC;
-```
-</details>
-
 ### Quanti OG risultano positivi nell'analisis id `BUSTEDPH`?
 <details>
 <summary>Soluzione</summary> 
@@ -104,6 +91,19 @@ SELECT COUNT(BUSTEDPH) AS BUSTEDPH_count
 FROM `AnalisiOG`
 WHERE Intensified = 1
 AND CSUBST = 1;
+```
+</details>
+
+
+### Quanti CNEE ci sono per cromosoma?
+<details>
+<summary>Soluzione</summary>	
+
+```sql
+SELECT Chr, COUNT(*) AS chr_count
+FROM CNEEtable
+GROUP BY Chr
+ORDER BY chr_count DESC;
 ```
 </details>
 
