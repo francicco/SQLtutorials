@@ -82,6 +82,45 @@ SELECT COUNT(BUSTEDPH) AS BUSTEDPH_count FROM `AnalisiOG`;
 ```
 </details>
 
+### Qui possiamo anche introdurre una condizione alternativa.
+Ad esempio contare gli OG positivi al test `BUSTEDPH` quando sono anche positivi a intensificazione o convergenza (`CSUBST`)
+<details>
+<summary>Soluzione</summary> 
+	
+```sql
+SELECT COUNT(BUSTEDPH) AS BUSTEDPH_count
+FROM `AnalisiOG`
+WHERE Intensified = 1
+OR CSUBST = 1;
+```
+</details>
+
+Oppure positivi ad entrambi
+<details>
+<summary>Soluzione</summary> 
+	
+```sql
+SELECT COUNT(BUSTEDPH) AS BUSTEDPH_count
+FROM `AnalisiOG`
+WHERE Intensified = 1
+AND CSUBST = 1;
+```
+</details>
+
+### Possiamo pensare di essere meno specifici e cercare in un sotto insieme di valori
+Per esempio, le stesse query solo in certi crosomosomi `Hmel212001o`, `Hmel213001o` e `Hmel206001o`
+<details>
+<summary>Soluzione</summary> 
+
+```sql
+SELECT Chr, COUNT(*) AS chr_count
+FROM CNEEtable
+WHERE Chr IN ('Hmel212001o','Hmel213001o','Hmel206001o')
+GROUP BY Chr
+ORDER BY chr_count DESC;
+```
+</details>
+
 ### Vediamo un altra query piu' complessa. Ad esempio vorrei voler sapere quale sia la lunghezza totale dei CNEE per cromosoma.
 In altre parole la somma della lunghezza di ogni CNEE per ogni cromosoma.
 
