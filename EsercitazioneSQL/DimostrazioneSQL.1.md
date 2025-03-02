@@ -168,10 +168,10 @@ Poi popoliamo la cartella con `LOAD DATA` se phpmyadmin ha i permessi di lettura
 ```sql
 LOAD DATA INFILE 'Path/to/UpSetdata.tsv'
 INTO TABLE `AnalisiOG`
-FIELDS TERMINATED BY ',' 
+FIELDS TERMINATED BY '\t' 
 ENCLOSED BY ''
 LINES TERMINATED BY '\n'
-IGNORE 0 LINES;
+IGNORE 1 LINES;
 ```
 
 Alternativamente possiamo usare la GUI di phpMyAdmin...
