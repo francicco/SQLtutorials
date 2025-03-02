@@ -73,7 +73,7 @@ ORDER BY chr_count DESC;
 ```
 </details>
 
-
+### Quanti OG risultano positivi nell'analisis id `BUSTEDPH`?
 <details>
 <summary>Soluzione</summary> 
 	
