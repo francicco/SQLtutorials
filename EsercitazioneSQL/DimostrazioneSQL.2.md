@@ -10,8 +10,9 @@ SELECT count(`OGid`) FROM `AnalisiOG`;
 <details>
 <summary>Soluzione</summary>
 ```
-count(`OGid`)
-2487
+|count(`OGid`)|
+_______________
+|2487|
 ```
 </details>
 
