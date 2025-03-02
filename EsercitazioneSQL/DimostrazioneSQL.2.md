@@ -9,11 +9,10 @@ SELECT count(`OGid`) FROM `AnalisiOG`;
 
 <details>
 <summary>Soluzione</summary>
-```
+
 |count(`OGid`)|
-_______________
-|2487|
-```
+ |--|
+ |2487|
 </details>
 
 ### Allo stesso modo, quali geni sono sotto intensificazione?
@@ -67,7 +66,10 @@ FROM `AnalisiOG`;
 <summary>Soluzione</summary>	
 
 ```sql
-SELECT Chr, COUNT(*) AS chr_count FROM CNEEtable GROUP BY Chr ORDER BY chr_count DESC;
+SELECT Chr, COUNT(*) AS chr_count
+FROM CNEEtable
+GROUP BY Chr
+ORDER BY chr_count DESC;
 ```
 </details>
 
